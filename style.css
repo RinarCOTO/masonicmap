@@ -1,0 +1,145 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.roboto-variable {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-style: normal; 
+    font-variation-settings: "wght" 400, "wdth" 100;
+  }
+
+.merriweather-variable{
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:"wdth" 100;
+}
+.fm-home-block{
+  padding-bottom: 40px;
+  border-bottom: solid 1px;
+}
+.fm-h-80{
+  min-height: 80vh;
+  max-height: 80vh;
+}
+.fm-h-20{
+  min-height: 20vh;
+}
+.fm-h-full{
+  min-height: 100vh;
+}
+.fm-pb-40{
+  padding-bottom: 40px;
+}
+.fm-border-gray{
+  border-color: var(--border-color);
+}
+h2{
+  font-family: var(--font-heading);
+  font-size: 34px!important;
+  color: var(--text-primary);
+  line-height: 1.2em;
+
+}
+h3{
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: bold;
+}
+p{
+  font-family: var(--font-secondary)!important;
+  font-size: 18px;
+}
+a{
+  color: var(--text-link);
+}
+.fm-home-block h2,
+.fm-home-block h3,
+.fm-home-block p{
+  margin-bottom: 10px;
+}
+.fm-map-wrapper {
+  position: sticky;
+  top: 20px;
+  max-height: 95vh;
+  padding-bottom: 40px;
+}
+.fm-mb-10{
+  margin-bottom: 10px;
+}
+/* Carousel */
+.main-slider img{
+  max-width: 530px;
+  max-height: 350px;
+}
+/* Thumbnail slide wrapper */
+.thumbnail-slider .splide__slide {
+  transform: scale(0.85); 
+  transition: all 0.3s ease;
+}
+.thumbnail-slider .splide__slide img {
+  filter: brightness(0.3);
+  transition: all 0.3s ease;
+}
+/* Active thumbnail gets full size and normal brightness */
+.thumbnail-slider .splide__slide.is-active {
+  transform: scale(1);
+}
+.thumbnail-slider .splide__slide.is-active img {
+  filter: brightness(1);
+}
+.splide-gallery-pair{
+  margin-top: 20px;
+}
+.splide-posts-carousel img{
+  max-width: 230px;
+  max-height: 130px;
+}
+.thumbnail-slider{
+  background-color: #000000;
+}
+
+/* Center content vertically and horizontally */
+.splide-posts-carousel .splide__slide__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Resize and center image */
+.splide-posts-carousel .splide__slide img {
+  width: 230px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Divider on first and second slide */
+.splide-posts-carousel .splide__slide:nth-child(1),
+.splide-posts-carousel .splide__slide:nth-child(2) {
+  border-right: 2px solid #000; /* Visible border */
+}
+
+
+
+
+:root{
+  /* Colors */
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-muted: #3a3a3a;
+  --color-gray: #4e4e4e;
+  --color-background: #eeeeee;
+  --border-color: #d9d9d9;
+  --text-primary: #6d6b54;
+  --text-link: #744c27;
+  /* Typography */
+  --font-heading: 'Roboto', sans-serif;
+  --font-secondary: 'Merriweather', sans-serif;
+}
