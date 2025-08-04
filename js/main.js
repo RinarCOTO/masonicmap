@@ -43,13 +43,15 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Initialize all Splide Posts Carousels (image with text below).
    */
-  document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
-    new Splide(postCarousel, {
-      type      : 'loop',
-      perPage   : 3 ,
-      pagination: true,
-      arrows    : true,
-      gap       : '1rem',
-    }).mount();
-  });
+document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
+  new Splide(postCarousel, {
+    type       : 'slide',       // Standard slide mode
+    perPage    : 3,             // Adjust based on how many to show
+    gap        : '1rem',
+    pagination : false,         // No pagination
+    arrows     : false,         // No arrows
+    drag       : true,          // Enable drag
+    autoWidth  : true,          // Enable dynamic width to simulate scroll
+  }).mount();
+});
 });
