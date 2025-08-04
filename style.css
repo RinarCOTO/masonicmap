@@ -139,18 +139,19 @@ a {
 .splide-posts-carousel .splide__track {
   overflow-x: auto;
   overflow-y: hidden;
+  padding-bottom: 40px;
 }
 .splide-posts-carousel .splide__track::-webkit-scrollbar {
+  padding-top: 40px;
   height: 8px;
 }
 
 .splide-posts-carousel .splide__track::-webkit-scrollbar-track {
-  background: #e0e0e0;
+  background: var(--border-color);
 }
 
 .splide-posts-carousel .splide__track::-webkit-scrollbar-thumb {
-  background-color: #444;
-  border-radius: 4px;
+  background-color: #000000;
 }
 
 .splide-posts-carousel .splide__track::-webkit-scrollbar-thumb:hover {
