@@ -125,7 +125,6 @@ a {
   /* Other */
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .fm-header-logo img {
   display: block;
