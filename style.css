@@ -15,6 +15,12 @@
   --text-link: #744c27;
   --font-heading: 'Roboto', sans-serif;
   --font-secondary: 'Merriweather', sans-serif;
+  --fm-header-outer-height: 100px;
+  --fm-header-inner-height: 70px;
+  --fm-header-height-difference: calc(
+    var(--fm-header-outer-height) - var(--fm-header-inner-height)
+  );
+    
 }
 
 .roboto-variable {
@@ -39,8 +45,8 @@
 }
 
 .fm-h-80 {
-  min-height: 70vh;
-  max-height: 70vh;
+  min-height: 63vh;
+  max-height: 63vh;
 }
 
 .fm-h-20 {
@@ -86,12 +92,57 @@ a {
 .fm-home-block p {
   margin-bottom: 10px;
 }
-
 .fm-map-wrapper {
   position: sticky;
-  top: 20px;
-  max-height: 100vh;
+  top: 90px;
+  max-height: 90vh;
+  transition: top 0.3s ease;
 }
+/* Header base styles */
+.fm-header-outer {
+  /* Make it stick */
+  height: var(--fm-header-outer-height);
+  position: sticky;
+  top: calc(
+    var(--fm-header-height-difference) * -1
+  ); /* Multiply by -1 to get a negative value */
+  display: flex;
+  align-items: center;
+
+  /* Other */
+  background-color: white;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0, 0.1);
+  z-index: 50;
+}
+.fm-header-inner {
+  /* Make it stick */
+  height: var(--fm-header-inner-height);
+  position: sticky;
+  top: 0;
+  width: 90vw;
+  padding: 4rem;
+
+  /* Other */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.fm-header-logo img {
+  display: block;
+  height: calc(var(--fm-header-inner-height) - 30px);
+}
+/* .fm-header {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-color);
+  top: -30px;
+  z-index: 50;
+  height: 100px;
+  transition: height 0.3s ease, top 0.3s ease;
+} */
 
 .fm-mb-10 {
   margin-bottom: 10px;

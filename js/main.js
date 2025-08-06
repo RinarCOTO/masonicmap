@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  /**
-   * Initialize all paired image gallery sliders (main + thumbnail).
-   */
+  // Initialize Splide sliders
   document.querySelectorAll('.splide-gallery-pair').forEach(pair => {
     const mainEl = pair.querySelector('.main-slider');
     const thumbsEl = pair.querySelector('.thumbnail-slider');
@@ -40,18 +38,31 @@ document.addEventListener('DOMContentLoaded', function () {
     thumbs.mount();
   });
 
-  /**
-   * Initialize all Splide Posts Carousels (image with text below).
-   */
-document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
-  new Splide(postCarousel, {
-    type       : 'slide',       // Standard slide mode
-    perPage    : 3,             // Adjust based on how many to show
-    gap        : '1rem',
-    pagination : false,         // No pagination
-    arrows     : false,         // No arrows
-    drag       : true,          // Enable drag
-    autoWidth  : true,          // Enable dynamic width to simulate scroll
-  }).mount();
-});
+  // Initialize posts carousel
+  document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
+    new Splide(postCarousel, {
+      type       : 'slide',
+      perPage    : 3,
+      gap        : '1rem',
+      pagination : false,
+      arrows     : false,
+      drag       : true,
+      autoWidth  : true,
+    }).mount();
+  });
+
+  // Sticky header scroll effect
+  // const header = document.getElementById("fm-header");
+  // const content = document.querySelector(".fm-content"); // Adjust the selector to your actual content wrapper
+  
+  // window.addEventListener("scroll", () => {
+  //   if (window.scrollY > 50) {
+  //     header.classList.add("sticky");
+  //     header.style.height = "70px";
+  //   } else {
+  //     header.classList.remove("sticky");
+  //     header.style.height = "100px";
+  //   }
+  // });
+  
 });
