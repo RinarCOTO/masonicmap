@@ -1,34 +1,36 @@
+// Initialize Splide sliders after DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
-  // Initialize Splide sliders
   document.querySelectorAll('.splide-gallery-pair').forEach(pair => {
     const mainEl = pair.querySelector('.main-slider');
     const thumbsEl = pair.querySelector('.thumbnail-slider');
 
     const main = new Splide(mainEl, {
-      type       : 'fade',
+      rewind: true,
+      type: 'fade',
       heightRatio: 0.5,
-      pagination : false,
-      arrows     : false,
-      cover      : true,
+      pagination: false,
+      arrows: true,
+      cover: true,
     });
 
     const thumbs = new Splide(thumbsEl, {
-      rewind           : true,
-      fixedHeight      : 58,
-      isNavigation     : true,
-      gap              : 10,
-      pagination       : false,
-      cover            : true,
-      focus            : false,
-      perPage          : 3,
-      dragMinThreshold : {
+      rewind: true,
+      fixedHeight: 58,
+      isNavigation: true,
+      gap: 10,
+      pagination: false,
+      arrows: false,
+      cover: true,
+      focus: true,
+      perPage: 3,
+      dragMinThreshold: {
         mouse: 4,
         touch: 10,
       },
-      breakpoints : {
+      breakpoints: {
         640: {
-          perPage     : 2,
-          fixedHeight : 38,
+          perPage: 2,
+          fixedHeight: 38,
         },
       },
     });
@@ -37,32 +39,39 @@ document.addEventListener('DOMContentLoaded', function () {
     main.mount();
     thumbs.mount();
   });
-
-  // Initialize posts carousel
-  document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
-    new Splide(postCarousel, {
-      type       : 'slide',
-      perPage    : 3,
-      gap        : '1rem',
-      pagination : false,
-      arrows     : false,
-      drag       : true,
-      autoWidth  : true,
-    }).mount();
-  });
-
-  // Sticky header scroll effect
-  // const header = document.getElementById("fm-header");
-  // const content = document.querySelector(".fm-content"); // Adjust the selector to your actual content wrapper
-  
-  // window.addEventListener("scroll", () => {
-  //   if (window.scrollY > 50) {
-  //     header.classList.add("sticky");
-  //     header.style.height = "70px";
-  //   } else {
-  //     header.classList.remove("sticky");
-  //     header.style.height = "100px";
-  //   }
-  // });
-  
 });
+document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
+  new Splide(postCarousel, {
+    type       : 'slide',
+    perPage    : 3,
+    gap        : '1rem',
+    pagination : false,
+    arrows     : false,
+    drag       : true,
+    autoWidth  : true,
+  }).mount();
+});
+// Utility: Get full URL with article ID hash
+function getFullUrl(articleId) {
+  const baseUrl = window.location.origin + window.location.pathname;
+  return `${baseUrl}#${articleId}`;
+}
+
+// Copy link and show toast
+function copyArticleLink(buttonElement, articleId) {
+  const fullUrl = getFullUrl(articleId);
+  navigator.clipboard.writeText(fullUrl)
+    .then(() => showCopyToast(buttonElement))
+    .catch(err => console.error("Copy failed:", err));
+}
+
+function showCopyToast(buttonElement) {
+  const toast = buttonElement.parentElement.querySelector('#copy-toast');
+  toast.classList.remove('opacity-0');
+  toast.classList.add('opacity-100');
+
+  setTimeout(() => {
+    toast.classList.remove('opacity-100');
+    toast.classList.add('opacity-0');
+  }, 2000);
+}

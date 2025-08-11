@@ -1,128 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/map.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
-    <!-- fonts -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Masonic Map</title>
 
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="js/main.js" defer></script>
+	<script src="js/map.js" defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
 
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+
+	<!-- Fonts -->
+	<link rel="stylesheet" href="assets/fonts/avenirlt_roman.ttf">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header class="fm-header-outer">
-        <div class="fm-header-inner">
-            header
-            <div class="fm-header-logo">
-                <img src="assets/insertlogo.webp" alt="">
-            </div>
-        </div>
-    </header>
-<main class="fm-container max-w-7xl mx-auto mt-20">
-  <div id="main_content" class="fm-content flex flex-row mx-auto w-full gap-5 mt-2">
-    <div class="w-2/5 pr-5 gap-6 flex flex-col">
-        <div class="fm-home-block border-b fm-border-gray">
-            <h2>Swedish - American Hall</h2>
-            <h3>2174 Market Street</h3>
-            <p>The number of Scandinavian people nearly doubled in San Francisco between 1900 and 1910, with much of that community centered around the area near Market Street and Dolores. Smack dab in the center of it was the Swedish American Hall, built in 1908 and home to several social and fraternal groups. That included, from 1908 until 1987, the Masonic lodge of Balder No. 393, named for the Norse god of light, comprised almost entirely of Scandinavian members. Initially the group aimed to form as a Swedish - language lodge (to complement the existing French, Italian, and German Masonic lodges in San Francisco at the time). Ultimately the group settled on English, however, but still kept a particular Masonic heritage alive for nearly 80 years.</p>
-            <div class="splide-gallery-pair">
-            <!-- Main slider -->
-            <section class="splide main-slider" aria-label="Main Image">
-                <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt=""></li>
-                </ul>
-                </div>
-            </section>
+<body >
+    <header class="border-b fm-sticky">header</header>
 
-            <!-- Thumbnail slider -->
-            <section class="splide thumbnail-slider mt-4" aria-label="Thumbnail Navigation">
-                <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt=""></li>
-                </ul>
-                </div>
-            </section>
-            </div>
-        </div>
-        <div class="fm-home-block borber-b fm-border-gray">
-            <h2>King Solomon’s Temple, Golden Gate Commandery Asylum, Knights Templar</h2>
-            <h3>2135 Sutter Street</h3>
-            <p>The commandery of Golden Gate No. 16 of the Knights Templar met in the imposing Matthew O’Brien and Carl Werner-designed temple in the Western Addition from 1905–1949. But that was only the beginning of the building’s history: At that point, it was taken over by Macedonia Bapti, st Church, an influential institution during the Civil Rights era at which Martin Luther King twice gave speeches. The imposing façade, built in the so-called “Jacobean phase of the Medieval Revival” style, originally hosted several blue lodges, particularly after the 1906 earthquake, including Occidental No. 22, Argonaut No. 461, Bethlehem No. 453, Educator No. 554, Military Service No. 570, and others. In 1950, the commandery moved to Burlingame.</p>
-            <div class="splide-gallery-pair">
-            <!-- Main slider -->
-            <section class="splide main-slider" aria-label="Main Image">
-                <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Richmond Temple/497A3136.png"></li>
-                    <li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.jpg" alt=""></li>
-                </ul>
-                </div>
-            </section>
+	<main class="flex max-w-[90rem] mx-auto">
+		<div class="w-[40vw] p-[20px] space-y-[50px]">
+            <h1>Welcome to the Masons of California</h1>
+			<article id="swedish-american-hall" class="flex flex-col gap-[20px]">
 
-            <!-- Thumbnail slider -->
-            <section class="splide thumbnail-slider mt-4" aria-label="Thumbnail Navigation">
-                <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Richmond Temple/497A3136.png" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.jpg" alt=""></li>
-                </ul>
-                </div>
-            </section>
-            </div>
-        </div>
-        <div class="fm-home-block borber-b fm-border-gray">
-            <h2>Richmond Masonic Temple</h2>
-            <h3>405 Arguello Street</h3>
-            <p>Many of the fraternal flourishes remain inside the 1908 Richmond Masonic Temple on Arguello Boulevard (originally called First Avenue), designed by Hermann Barth, architect of the city’s German Hospital. Engraved Masonic symbols, Corinthian column paneling, and the vaulted ceiling still give a sense of grandeur to what is now a fitness gym. However, the most striking details of the massive building, which was the first major construction project in the Richmond District after the 1906 earthquake, is not part of the original design at all: In 1936, Bernard J. Joseph (who also designed the old Orpheum Theater, on O’Farrell) renovated the building’s exterior in a Mayan Deco theme, with engraved paneling along the parapet at the building’s roofline. The temple was once home to Richmond No. 375 and later Lebanon No. 495 and Seal Rock No. 536.</p>
-            <div class="splide-gallery-pair">
-            <!-- Main slider -->
-            <section class="splide main-slider" aria-label="Main Image">
-                <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.png" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 2.53.21 PM.png"></li>
-                    <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 3.00.18 PM.png" alt=""></li>
-                </ul>
-                </div>
-            </section>
+				<!-- Article Header -->
+				<header class="flex flex-col gap-[10px]">
+					<div class="flex items-center gap-[20px]">
+						<h2 class="m-0">Swedish&nbsp;-&nbsp;American Hall</h2>
+						<div class="relative flex items-center justify-center">
+							<button 
+								onclick="copyArticleLink(this, 'swedish-american-hall')" 
+								aria-label="Copy link to Swedish American Hall" 
+                                title="Copy link to Swedish American Hall"
+								class="my-auto"
+							>
+								<svg 
+									id="Link_24" 
+									width="24" 
+									height="24" 
+									viewBox="0 0 24 24" 
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor"
+									role="img"
+									aria-hidden="true"
+								>
+									<g transform="rotate(-45 12 12)">
+										<path d="M7 11h10v2H7z"/>
+										<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
+									</g>
+								</svg>
+							</button>
+							<div 
+								class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-300 z-10 text-[10px]"
+								id="copy-toast"
+								role="status"
+								aria-live="polite"
+							>
+								Link copied!
+							</div>
+						</div>
+					</div>
+				</header>
 
-            <!-- Thumbnail slider -->
-            <section class="splide thumbnail-slider mt-4" aria-label="Thumbnail Navigation">
-                <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.png" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 2.53.21 PM.png" alt=""></li>
-                    <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 3.00.18 PM.png" alt=""></li>
-                </ul>
+				<!-- Body Text -->
+				<p>
+					The number of Scandinavian people nearly doubled in San Francisco between 1900 and 1910, with much of that community centered around the area near Market Street and Dolores. Smack dab in the center of it was the Swedish American Hall, built in 1908 and home to several social and fraternal groups. That included, from 1908 until 1987, the Masonic lodge of Balder No. 393, named for the Norse god of light, comprised almost entirely of Scandinavian members. Initially the group aimed to form as a Swedish-language lodge (to complement the existing French, Italian, and German Masonic lodges in San Francisco at the time). Ultimately the group settled on English, however, but still kept a particular Masonic heritage alive for nearly 80 years.
+				</p>
+                <!-- Address -->
+                <div class="flex gap-[20px] py-[11px] border-y fm-border items-center">
+                    <svg 
+                        style="fill: var(--icon);" 
+                        id="Pin_24" 
+                        width="20" 
+                        height="20" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-hidden="true"
+                    >
+                        <path 
+                            d="M12 0C7.58 0 4 3.58 4 8c0 3.51 5 11.99 7.15 15.52a1 1 0 0 0 1.7 0C15 20 20 11.51 20 8c0-4.42-3.58-8-8-8zM12 11.5A3.5 3.5 0 1 1 15.5 8 3.5 3.5 0 0 1 12 11.5z" 
+                            fill="currentColor"
+                        />
+                    </svg>
+                    <address class="not-italic">2174 Market Street</address>
                 </div>
-            </section>
-            </div>
-        </div>
 
-        <div>
-           <p>
-           </p>
-        </div>
-    </div>
-    <div class="fm-map-wrapper w-3/5 border-l fm-border-gray self-start">
-        <div class="w-full pl-5 flex flex-col gap-5">
-            <div id="map" class="fm-h-80 w-full"></div>
-            <div class="fm-h-20 w-full">
-                <section class="fm-mb-10">More Maps</section>
+				<!-- Image Gallery -->
+				<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
+					
+					<!-- Main slider -->
+					<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
+						<div class="splide__track">
+							<ul class="splide__list">
+                                <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 3.00.18 PM.png" alt="Interior of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.png" alt="Historic photo of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 2.53.21 PM.png" alt="Interior of Swedish American Hall"></li>
+							</ul>
+						</div>
+					</section>
+					<!-- Thumbnail slider -->
+                    <section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
+                        <hr class="solid">
+                        <div class="splide__track mx-auto py-[20px]">
+                        <ul class="splide__list">
+                            <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 3.00.18 PM.png" alt="Interior of Swedish American Hall"></li>
+                            <li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.png" alt="Historic photo of Swedish American Hall"></li>
+                            <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 2.53.21 PM.png" alt="Interior of Swedish American Hall"></li>
+                        </ul>
+                        </div>
+                      </section>
+				</div>
+			</article>
+            <div class="gap-2 flex flex-col">
+                <hr class="solid-thick">
+                <hr class="solid-thin">
+            </div>
+
+			<article id="kings-solomon-temple" class="flex flex-col gap-[30px] border-b pb-[20px]">
+
+				<!-- Article Header -->
+				<header class="flex flex-col gap-[10px]">
+					<div class="flex items-center gap-[20px]">
+						<h2 class="m-0">King Solomon’s Temple, Golden Gate Commandery Asylum, Knights Templar</h2>
+						<div class="relative flex items-center justify-center">
+							<button 
+								onclick="copyArticleLink(this, 'King Solomon’s Temple, Golden Gate Commandery Asylum, Knights Templar')" 
+								aria-label="Copy link to King Solomon’s Temple, Golden Gate Commandery Asylum, Knights Templar"
+                                title="Copy link to King Solomon's Temple"
+								class="my-auto"
+							>
+								<svg 
+									id="Link_24" 
+									width="24" 
+									height="24" 
+									viewBox="0 0 24 24" 
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor"
+									role="img"
+									aria-hidden="true"
+								>
+									<g transform="rotate(-45 12 12)">
+										<path d="M7 11h10v2H7z"/>
+										<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
+									</g>
+								</svg>
+							</button>
+							<div 
+								class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-300 z-10 text-[10px]"
+								id="copy-toast"
+								role="status"
+								aria-live="polite"
+							>
+								Link copied!
+							</div>
+						</div>
+					</div>
+				</header>
+
+				<!-- Body Text -->
+				<p>
+					The commandery of Golden Gate No. 16 of the Knights Templar met in the imposing Matthew O’Brien and Carl Werner-designed temple in the Western Addition from 1905–1949. But that was only the beginning of the building’s history: At that point, it was taken over by Macedonia Bapti, st Church, an influential institution during the Civil Rights era at which Martin Luther King twice gave speeches. The imposing façade, built in the so-called “Jacobean phase of the Medieval Revival” style, originally hosted several blue lodges, particularly after the 1906 earthquake, including Occidental No. 22, Argonaut No. 461, Bethlehem No. 453, Educator No. 554, Military Service No. 570, and others. In 1950, the commandery moved to Burlingame.
+				</p>
+                <!-- Address -->
+                <div class="flex gap-[20px] py-[11px] border-y fm-border items-center">
+                    <svg 
+                        style="fill: var(--icon);" 
+                        id="Pin_24" 
+                        width="20" 
+                        height="20" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-hidden="true"
+                    >
+                        <path 
+                            d="M12 0C7.58 0 4 3.58 4 8c0 3.51 5 11.99 7.15 15.52a1 1 0 0 0 1.7 0C15 20 20 11.51 20 8c0-4.42-3.58-8-8-8zM12 11.5A3.5 3.5 0 1 1 15.5 8 3.5 3.5 0 0 1 12 11.5z" 
+                            fill="currentColor"
+                        />
+                    </svg>
+                    <address class="not-italic">2135 Sutter Street</address>
+                </div>
+
+				<!-- Image Gallery -->
+				<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
+					
+					<!-- Main slider -->
+					<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
+						<div class="splide__track">
+							<ul class="splide__list">
+								<li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt="Historic photo of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt="Interior of Swedish American Hall"></li>
+							</ul>
+						</div>
+					</section>
+					<!-- Thumbnail slider -->
+                    <section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
+                        <hr class="solid">
+                        <div class="splide__track mx-auto py-[20px]">
+                        <ul class="splide__list">
+                            <li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt=""></li>
+                            <li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt=""></li>
+                        </ul>
+                        </div>
+                    </section>
+				</div>
+			</article>
+            <div class="gap-2 flex flex-col">
+                <hr class="solid-thick">
+                <hr class="solid-thin">
+            </div>
+            <article id="richmond-masonic-temple" class="flex flex-col gap-[30px] border-b pb-[20px]">
+
+				<!-- Article Header -->
+				<header class="flex flex-col gap-[10px]">
+					<div class="flex items-center gap-[20px]">
+						<h2 class="m-0">Richmond Masonic Temple</h2>
+						<div class="relative flex items-center justify-center">
+							<button 
+								onclick="copyArticleLink(this, 'Richmond Masonic Temple')" 
+								aria-label="Copy link to Richmond Masonic Temple"
+                                title="Copy link to Richmond Masonic Temple"
+								class="my-auto"
+							>
+								<svg 
+									id="Link_24" 
+									width="24" 
+									height="24" 
+									viewBox="0 0 24 24" 
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor"
+									role="img"
+									aria-hidden="true"
+								>
+									<g transform="rotate(-45 12 12)">
+										<path d="M7 11h10v2H7z"/>
+										<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
+									</g>
+								</svg>
+							</button>
+							<div 
+								class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-300 z-10 text-[10px]"
+								id="copy-toast"
+								role="status"
+								aria-live="polite"
+							>
+								Link copied!
+							</div>
+						</div>
+					</div>
+				</header>
+
+				<!-- Body Text -->
+				<p>
+					Many of the fraternal flourishes remain inside the 1908 Richmond Masonic Temple on Arguello Boulevard (originally called First Avenue), designed by Hermann Barth, architect of the city’s German Hospital. Engraved Masonic symbols, Corinthian column paneling, and the vaulted ceiling still give a sense of grandeur to what is now a fitness gym. However, the most striking details of the massive building, which was the first major construction project in the Richmond District after the 1906 earthquake, is not part of the original design at all: In 1936, Bernard J. Joseph (who also designed the old Orpheum Theater, on O’Farrell) renovated the building’s exterior in a Mayan Deco theme, with engraved paneling along the parapet at the building’s roofline. The temple was once home to Richmond No. 375 and later Lebanon No. 495 and Seal Rock No. 536.
+				</p>
+                <!-- Address -->
+                <div class="flex gap-[20px] py-[11px] border-y fm-border items-center">
+                    <svg 
+                        style="fill: var(--icon);" 
+                        id="Pin_24" 
+                        width="20" 
+                        height="20" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-hidden="true"
+                    >
+                        <path 
+                            d="M12 0C7.58 0 4 3.58 4 8c0 3.51 5 11.99 7.15 15.52a1 1 0 0 0 1.7 0C15 20 20 11.51 20 8c0-4.42-3.58-8-8-8zM12 11.5A3.5 3.5 0 1 1 15.5 8 3.5 3.5 0 0 1 12 11.5z" 
+                            fill="currentColor"
+                        />
+                    </svg>
+                    <address class="not-italic">405 Arguello Street</address>
+                </div>
+
+				<!-- Image Gallery -->
+				<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
+					
+					<!-- Main slider -->
+					<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
+						<div class="splide__track">
+							<ul class="splide__list">
+                                <li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt=""></li>
+                                <li class="splide__slide"><img src="assets/Richmond Temple/497A3136.png" alt=""></li>
+                                <li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.jpg" alt=""></li>
+							</ul>
+						</div>
+					</section>
+					<!-- Thumbnail slider -->
+                    <section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
+                        <hr class="solid">
+                        <div class="splide__track mx-auto py-[20px]">
+                        <ul class="splide__list">
+                            <li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt=""></li>
+                            <li class="splide__slide"><img src="assets/Richmond Temple/497A3136.png" alt=""></li>
+                            <li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.jpg" alt=""></li>
+                        </ul>
+                        </div>
+                    </section>
+				</div>
+			</article>
+		</div>
+
+
+		<!-- Map section -->
+		<div class="fm-map-wrapper w-[60vw] p-[20px] border-l-[1px] gap-[20px]">
+			<div id="map" class="h-[70vh] w-full"></div>
+            <div class="h-20vh">
+                <section>More Maps</section>
                 <section class="splide splide-posts-carousel" aria-label="Posts Carousel">
                     <div class="splide__track">
                         <ul class="splide__list">
@@ -134,7 +325,7 @@
                         </li>
                         <li class="splide__slide">
                             <div class="splide__slide__container">
-                            <img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt="..." class="slide-image h-auto object-cover">
+                            <img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt="..." class="slide-image h-auto object-cover">
                             <p class="mt-2 text-center text-sm text-gray-600">lorem</p>
                             </div>
                         </li>
@@ -153,13 +344,10 @@
                         </ul>
                     </div>
                 </section>
-
             </div>
-        </div>
-    </div>
+		</div>
+	</main>
 
-  </div>
-</main>
-
+	<footer class="bg-slate-900 text-white h-[20vh]">footer</footer>
 </body>
 </html>
