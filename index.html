@@ -10,7 +10,7 @@
 	<script src="js/map.js" defer></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
-
+    <link rel="icon" href="assets/freemason_favicon.webp" type="image/webp">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
 
@@ -20,7 +20,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body >
-    <header class="border-b fm-sticky">header</header>
+    <header class="border-b fm-sticky h-[90px] flex items-center justify-center ">
+        <div class="max-w-[90rem] mx-auto">header</div>
+    </header>
 
 	<main class="flex max-w-[90rem] mx-auto">
 		<div class="w-[40vw] p-[20px] space-y-[50px]">
@@ -309,35 +311,35 @@
 
 
 		<!-- Map section -->
-		<div class="fm-map-wrapper w-[60vw] p-[20px] border-l-[1px] gap-[20px]">
-			<div id="map" class="h-[70vh] w-full"></div>
-            <div class="h-20vh">
-                <section>More Maps</section>
+		<div class="fm-map-wrapper w-[60vw] p-[20px] border-l-[1px] pb-[20px]">
+			<div id="map" class="h-[80vh] w-full"></div>
+            <div>
+                <section class="py-[20px]">More Maps</section>
                 <section class="splide splide-posts-carousel" aria-label="Posts Carousel">
-                    <div class="splide__track">
+                    <div class="splide__track pb-[20px]">
                         <ul class="splide__list">
                         <li class="splide__slide">
-                            <div class="splide__slide__container fm-post-carousel">
+                            <div class="splide__slide__container fm-post-carousel flex flex-row gap-[20px]">
                             <img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt="..." class="slide-image h-auto object-cover">
-                            <p class="mt-2 text-center text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nulla magnam soluta temporibus architecto.</p>
+                            <p class="mt-2 text-left text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                             </div>
                         </li>
                         <li class="splide__slide">
-                            <div class="splide__slide__container">
+                            <div class="splide__slide__container fm-post-carousel flex flex-row gap-[20px]">
                             <img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt="..." class="slide-image h-auto object-cover">
-                            <p class="mt-2 text-center text-sm text-gray-600">lorem</p>
+                            <p class="mt-2 text-left text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                             </div>
                         </li>
                         <li class="splide__slide">
-                            <div class="splide__slide__container">
-                            <img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt="..." class="slide-image h-auto object-cover">
-                            <p class="mt-2 text-center text-sm text-gray-600">lorem</p>
+                            <div class="splide__slide__container fm-post-carousel flex flex-row gap-[20px]">
+                            <img src="assets/Swedish American Hall/497A3122.png" alt="..." class="slide-image h-auto object-cover">
+                            <p class="mt-2 text-left text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                             </div>
                         </li>
                         <li class="splide__slide">
-                            <div class="splide__slide__container">
-                            <img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt="..." class="slide-image h-auto object-cover">
-                            <p class="mt-2 text-center text-sm text-gray-600">lorem</p>
+                            <div class="splide__slide__container fm-post-carousel flex flex-row gap-[20px]">
+                            <img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt="..." class="slide-image h-auto object-cover">
+                            <p class="mt-2 text-left text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                             </div>
                         </li>
                         </ul>
@@ -347,6 +349,6 @@
 		</div>
 	</main>
 
-	<footer class="bg-slate-900 text-white h-[20vh]">footer</footer>
+	<footer class="bg-slate-900 text-white h-[10vh]">footer</footer>
 </body>
 </html>
