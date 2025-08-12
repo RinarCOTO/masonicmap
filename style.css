@@ -173,31 +173,29 @@ padding-right: 20px;
   width: 100%;
   background-color: white;
   z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers .fm-logo horizontally */
 }
 
 .fm-logo {
-  max-width: 90rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0px;
+  padding: 20px 0;
   transition: padding 0.3s ease;
 }
 
 .fm-logo img {
-  height: 100px; 
+  height: 100px;
   transition: height 0.3s ease;
 }
 
-/* Shrink state */
 .fm-header.shrink .fm-logo {
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 .fm-header.shrink .fm-logo img {
   height: 65px;
-}
-.fm-header.shrink .solid-bottom{
-  width: 100%;
 }
 /* END HEADER */
