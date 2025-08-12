@@ -20,11 +20,21 @@
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body >
-    <header class="border-b fm-sticky h-[90px] flex items-center justify-center ">
-        <div class="max-w-[90rem] mx-auto">header</div>
-    </header>
+	<header id="fm-main-header" class="fm-header">
+		<div class="fm-logo">
+			<a href="https://freemason.org/" target="_blank" rel="noopener noreferrer">
+				<img src="assets/Masons-of-California_logo_Trans.png" alt="Masons of California Logo" target="_blank" rel="noopener noreferrer"  />
+			</a>
+		</div>
+		<hr class="solid-bottom center">
+	</header>
+    <!-- <header class=" fm-header-outer fm-sticky flex items-center justify-center ">
+        <div class="max-w-[90rem] mx-auto fm-header-inner">
+            <img class="fm-logo" src="assets/Masons-of-California_logo_Trans.png" alt="">
+        </div>
+    </header> -->
 
-	<main class="flex max-w-[90rem] mx-auto">
+	<main class="flex max-w-[90rem] mx-auto mt-[140px]">
 		<div class="w-[40vw] p-[20px] space-y-[50px]">
             <h1>Welcome to the Masons of California</h1>
 			<article id="swedish-american-hall" class="flex flex-col gap-[20px]">
@@ -311,8 +321,8 @@
 
 
 		<!-- Map section -->
-		<div class="fm-map-wrapper w-[60vw] p-[20px] border-l-[1px] pb-[20px]">
-			<div id="map" class="h-[80vh] w-full"></div>
+		<div class="fm-map-wrapper w-[60vw] p-[20px] fm-border-l pb-[20px]">
+			<div id="map" class="h-[75vh] w-full"></div>
             <div>
                 <section class="py-[20px]">More Maps</section>
                 <section class="splide splide-posts-carousel" aria-label="Posts Carousel">

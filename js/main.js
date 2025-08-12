@@ -75,3 +75,14 @@ function showCopyToast(buttonElement) {
     toast.classList.add('opacity-0');
   }, 2000);
 }
+const header = document.getElementById('fm-main-header');
+const scrollThreshold = 100;
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > scrollThreshold) {
+    header.classList.add('shrink');
+  } else {
+    header.classList.remove('shrink');
+  }
+});
+

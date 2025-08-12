@@ -1,6 +1,6 @@
 window.initMap = function () {
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 34.052235, lng: -118.243683 }, // Los Angeles
+      center: { lat: 34.052235, lng: -118.243683 }, // Los Angeles 
       zoom: 10,
       styles: [
         {
