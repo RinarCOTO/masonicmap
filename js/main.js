@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
         touch: 10,
       },
       breakpoints: {
-        640: {
+        768: {
           perPage: 2,
-          fixedHeight: 38,
+          fixedHeight: 58,
         },
       },
     });
@@ -92,36 +92,48 @@ const mapTab = document.getElementById('mapTab');
 
 // Function to activate tab
 function activateTab(tab) {
+  if (window.innerWidth > 768) {
+    // Desktop: show both, no need for tab switching
+    listTab.classList.remove('hidden');
+    mapTab.classList.remove('hidden');
+
+    // Remove active styles since both are shown
+    listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
+    mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
+    return;
+  }
+
+  // Mobile: normal tab behavior
   if (tab === 'list') {
     listTab.classList.remove('hidden');
     mapTab.classList.add('hidden');
 
-    // Active list tab styles
     listTabBtn.classList.add('bg-red-700', 'text-white', 'rounded-full');
     listTabBtn.classList.remove('bg-transparent', 'text-gray-800');
 
-    // Inactive map tab styles
     mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
     mapTabBtn.classList.add('bg-transparent', 'text-gray-800');
-
   } else {
     mapTab.classList.remove('hidden');
     listTab.classList.add('hidden');
 
-    // Active map tab styles
     mapTabBtn.classList.add('bg-red-700', 'text-white', 'rounded-full');
     mapTabBtn.classList.remove('bg-transparent', 'text-gray-800');
 
-    // Inactive list tab styles
     listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
     listTabBtn.classList.add('bg-transparent', 'text-gray-800');
   }
 }
 
-
-// Default to Map tab
-activateTab('map');
+// Initial setup
+activateTab(window.innerWidth <= 768 ? 'map' : null);
 
 // Event listeners
 listTabBtn.addEventListener('click', () => activateTab('list'));
 mapTabBtn.addEventListener('click', () => activateTab('map'));
+
+// Handle window resize (optional but nice for responsiveness)
+window.addEventListener('resize', () => {
+  activateTab(window.innerWidth <= 768 ? 'map' : null);
+});
+
