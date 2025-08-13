@@ -214,7 +214,14 @@ padding-right: 20px;
   .fm-logo img{
     max-height: 43px;
   }
+  .fm-logo{
+    padding: 6px;
+  }
   .fm-header.shrink .fm-logo {
     padding: 6px 0;
+  }
+  .mobile-tab{
+    font-family: var(--font-secondary);
+    font-size: 12px;
   }
 }

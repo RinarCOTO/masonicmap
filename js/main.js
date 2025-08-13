@@ -95,19 +95,29 @@ function activateTab(tab) {
   if (tab === 'list') {
     listTab.classList.remove('hidden');
     mapTab.classList.add('hidden');
-    listTabBtn.classList.add('border-red-700', 'text-red-700');
-    listTabBtn.classList.remove('border-transparent', 'text-gray-500');
-    mapTabBtn.classList.remove('border-red-700', 'text-red-700');
-    mapTabBtn.classList.add('border-transparent', 'text-gray-500');
+
+    // Active list tab styles
+    listTabBtn.classList.add('bg-red-700', 'text-white', 'rounded-full');
+    listTabBtn.classList.remove('bg-transparent', 'text-gray-800');
+
+    // Inactive map tab styles
+    mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
+    mapTabBtn.classList.add('bg-transparent', 'text-gray-800');
+
   } else {
     mapTab.classList.remove('hidden');
     listTab.classList.add('hidden');
-    mapTabBtn.classList.add('border-red-700', 'text-red-700');
-    mapTabBtn.classList.remove('border-transparent', 'text-gray-500');
-    listTabBtn.classList.remove('border-red-700', 'text-red-700');
-    listTabBtn.classList.add('border-transparent', 'text-gray-500');
+
+    // Active map tab styles
+    mapTabBtn.classList.add('bg-red-700', 'text-white', 'rounded-full');
+    mapTabBtn.classList.remove('bg-transparent', 'text-gray-800');
+
+    // Inactive list tab styles
+    listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
+    listTabBtn.classList.add('bg-transparent', 'text-gray-800');
   }
 }
+
 
 // Default to Map tab
 activateTab('map');
