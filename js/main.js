@@ -85,4 +85,33 @@ window.addEventListener('scroll', () => {
     header.classList.remove('shrink');
   }
 });
+const listTabBtn = document.getElementById('listTabBtn');
+const mapTabBtn = document.getElementById('mapTabBtn');
+const listTab = document.getElementById('listTab');
+const mapTab = document.getElementById('mapTab');
 
+// Function to activate tab
+function activateTab(tab) {
+  if (tab === 'list') {
+    listTab.classList.remove('hidden');
+    mapTab.classList.add('hidden');
+    listTabBtn.classList.add('border-red-700', 'text-red-700');
+    listTabBtn.classList.remove('border-transparent', 'text-gray-500');
+    mapTabBtn.classList.remove('border-red-700', 'text-red-700');
+    mapTabBtn.classList.add('border-transparent', 'text-gray-500');
+  } else {
+    mapTab.classList.remove('hidden');
+    listTab.classList.add('hidden');
+    mapTabBtn.classList.add('border-red-700', 'text-red-700');
+    mapTabBtn.classList.remove('border-transparent', 'text-gray-500');
+    listTabBtn.classList.remove('border-red-700', 'text-red-700');
+    listTabBtn.classList.add('border-transparent', 'text-gray-500');
+  }
+}
+
+// Default to Map tab
+activateTab('map');
+
+// Event listeners
+listTabBtn.addEventListener('click', () => activateTab('list'));
+mapTabBtn.addEventListener('click', () => activateTab('map'));
