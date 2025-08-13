@@ -11,13 +11,14 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
     <link rel="icon" href="assets/freemason_favicon.webp" type="image/webp">
-	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+
 </head>
 <body >
 	<header id="fm-main-header" class="fm-header">
@@ -28,7 +29,7 @@
 		</div>
 		<hr class="solid-bottom ">
 	</header>
-	<main class="flex max-w-[90rem] max-md:w-[90vw] mt-[140px]">
+	<main class="flex max-w-[90rem] mx-auto mt-[140px] max-md:mt-[0px]">
 		    <!-- Mobile Tabs -->
 			<div class="hidden max-md:block w-[132px] border-b border-gray-300 fixed top-[90px] bg-white z-50">
 
@@ -335,11 +336,11 @@
 
 
 		<!-- Map section -->
-		<div id="mapTab" class="fm-map-wrapper w-[60vw] max-md:w-[100vw] p-[20px] max-md:padding-[0px] fm-border-l pb-[20px] max-md:pb-[0]">
-			<div id="map" class="h-[75vh] w-full"></div>
+		<div id="mapTab" class="fm-map-wrapper w-[60vw] p-[20px] fm-border-l pb-[20px] max-md:w-[100vw] max-md:p-[0px]">
+			<div id="map" class="h-[75vh] w-full max-md:h-[100vh]"></div>
             <div>
-                <section class="py-[20px]">More Maps</section>
-                <section class="splide splide-posts-carousel" aria-label="Posts Carousel">
+                <section class="py-[20px] max-md:hidden">More Maps</section>
+                <section class="splide splide-posts-carousel max-md:hidden" aria-label="Posts Carousel">
                     <div class="splide__track pb-[20px]">
                         <ul class="splide__list">
                         <li class="splide__slide">
@@ -373,7 +374,7 @@
 		</div>
 	</main>
 
-	<footer class="bg-slate-900 text-white h-[10vh] max-md:hidden">
+	<footer class="bg-slate-900 text-white h-[10vh]">
 		<div class="flex flex-col">
 				<div>share to social</div>
 				<div>subscribe to news letter</div>
