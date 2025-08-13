@@ -125,15 +125,16 @@ function activateTab(tab) {
   }
 }
 
-// Initial setup
-activateTab(window.innerWidth <= 768 ? 'map' : null);
+// Initial setup: default to 'list' on mobile
+activateTab(window.innerWidth <= 768 ? 'list' : null);
 
 // Event listeners
 listTabBtn.addEventListener('click', () => activateTab('list'));
 mapTabBtn.addEventListener('click', () => activateTab('map'));
 
-// Handle window resize (optional but nice for responsiveness)
+// Handle window resize
 window.addEventListener('resize', () => {
-  activateTab(window.innerWidth <= 768 ? 'map' : null);
+  activateTab(window.innerWidth <= 768 ? 'list' : null);
 });
+
 
