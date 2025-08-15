@@ -145,4 +145,14 @@ window.addEventListener('resize', () => {
   activateTab(window.innerWidth <= 768 ? 'list' : null);
 });
 
+// window load
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash;
+  if (hash) {
+    const el = document.querySelector(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+});
 
