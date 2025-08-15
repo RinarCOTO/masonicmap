@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const main = new Splide(mainEl, {
       rewind: true,
       type: 'fade',
-      heightRatio: 0.5,
+      cover: false,
+      fixedHeight: 528,
+      fixedWidth: 528,
       pagination: false,
       arrows: true,
       cover: true,
