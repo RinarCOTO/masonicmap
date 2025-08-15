@@ -68,15 +68,21 @@ function copyArticleLink(buttonElement, articleId) {
 }
 
 function showCopyToast(buttonElement) {
-  const toast = buttonElement.parentElement.querySelector('#copy-toast');
+  const toast = buttonElement.parentElement.querySelector('.copy-toast');
+  if (!toast) return;
+
+  // Show toast
   toast.classList.remove('opacity-0');
   toast.classList.add('opacity-100');
 
+  // Hide after 2s
   setTimeout(() => {
     toast.classList.remove('opacity-100');
     toast.classList.add('opacity-0');
   }, 2000);
 }
+
+
 const header = document.getElementById('fm-main-header');
 const scrollThreshold = 100;
 
