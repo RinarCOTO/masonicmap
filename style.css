@@ -27,8 +27,8 @@ font-style: normal;
 
 @font-face {
 font-family: 'Avenir LT Roman';
-src: url('assets/fonts/avenirlt_roman.ttf') format('truetype');
-font-weight: normal;
+src: url('assets/fonts/AvenirLT-Roman.woff2') format('woff2-variations');
+font-weight: 100 900;
 font-style: normal;
 }
 .roboto-variable {
@@ -73,6 +73,13 @@ p {
 a {
   color: var(--color-primary);
 }
+footer a {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  font-variation-settings: 'wght' 900;
+  font-weight: 900 !important;
+}
+
 address{
   font-family: var(--font-secondary);
   font-size: 16px;
@@ -156,12 +163,12 @@ color: var(--color-secondary);
 /* SPLIDER POST CAROUSEL */
 .splide__slide img{
   min-height: 75px;
-max-height: 75px;
-max-width: 75px;
-height: auto;
-display: block;
-margin: 0 auto;
-transition: transform 0.3s ease;
+  max-height: 75px;
+  max-width: 75px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
 }
 .fm-post-carousel{
   max-width: 230px;
