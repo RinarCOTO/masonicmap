@@ -71,9 +71,12 @@ p {
 }
 
 a {
-  color: var(--text-link);
+  color: var(--color-primary);
 }
-
+address{
+  font-family: var(--font-secondary);
+  font-size: 16px;
+}
 /* SPLIDER */
 .main-slider .splide__track{
   height: 528px;
@@ -110,6 +113,14 @@ opacity: 1;
 
 
 /* END SPILDER */
+.fm-hover:hover{
+  fill: var(--color-secondary);
+  color: var(--color-secondary);
+}
+.fm-hover a:hover svg,
+.fm-hover a:hover .fm-icon-text {
+  color: var(--color-secondary);
+}
 
 /* BORDER */
 .fm-border-l{
@@ -219,7 +230,7 @@ padding-right: 20px;
   height: 65px;
 }
 .solid-bottom{
-  border-bottom: 1px solid var(--color-secondary);
+  border-bottom: 1px solid var(--color-border);
   width: 90rem;
   margin: 0 auto;
 }

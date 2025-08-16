@@ -15,12 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const thumbs = new Splide(thumbsEl, {
-      // rewind: true,
-      // type: 'loop',
       isNavigation: true,
       fixedWidth: 75,
       fixedHeight: 75,
-      // autoWidth: true,
       gap: 10,
       pagination: false,
       arrows: false,
@@ -28,25 +25,17 @@ document.addEventListener('DOMContentLoaded', function () {
       focus: 'center',
       trimSpace: false,
       drag: false,
-      // perPage: 3,
-      dragMinThreshold: {
-        mouse: 4,
-        touch: 10,
-      },
-      breakpoints: {
-        768: {
-          perPage: 2,
-        },
-      },
+      dragMinThreshold: { mouse: 4, touch: 10 },
+      breakpoints: { 768: { perPage: 2 } },
     });
-    thumbs.on('mounted', () => {
-      thumbs.go(1);
-    });
+
+    thumbs.on('mounted', () => thumbs.go(1));
     main.sync(thumbs);
     main.mount();
     thumbs.mount();
   });
 });
+
 document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
   new Splide(postCarousel, {
     type       : 'slide',
@@ -58,6 +47,7 @@ document.querySelectorAll('.splide-posts-carousel').forEach(postCarousel => {
     autoWidth  : true,
   }).mount();
 });
+
 // Utility: Get full URL with article ID hash
 function getFullUrl(articleId) {
   const baseUrl = window.location.origin + window.location.pathname;
@@ -75,89 +65,113 @@ function copyArticleLink(buttonElement, articleId) {
 function showCopyToast(buttonElement) {
   const toast = buttonElement.parentElement.querySelector('.copy-toast');
   if (!toast) return;
-
-  // Show toast
   toast.classList.remove('opacity-0');
   toast.classList.add('opacity-100');
-
-  // Hide after 2s
   setTimeout(() => {
     toast.classList.remove('opacity-100');
     toast.classList.add('opacity-0');
   }, 2000);
 }
 
+// Social share function
+function shareToSocial(platform, articleId) {
+  const url = encodeURIComponent(getFullUrl(articleId));
+  let shareUrl = '';
 
+  switch(platform) {
+    case 'facebook':
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      break;
+    case 'twitter':
+      shareUrl = `https://twitter.com/intent/tweet?url=${url}`;
+      break;
+    case 'linkedin':
+      shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
+      break;
+  }
+
+  // Open popup
+  const width = 600;
+  const height = 400;
+  const left = (screen.width / 2) - (width / 2);
+  const top = (screen.height / 2) - (height / 2);
+  window.open(
+    shareUrl,
+    'shareWindow',
+    `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`
+  );
+}
+
+// Header shrink on scroll
 const header = document.getElementById('fm-main-header');
 const scrollThreshold = 100;
-
 window.addEventListener('scroll', () => {
-  if (window.scrollY > scrollThreshold) {
-    header.classList.add('shrink');
-  } else {
-    header.classList.remove('shrink');
-  }
+  if (window.scrollY > scrollThreshold) header.classList.add('shrink');
+  else header.classList.remove('shrink');
 });
+
+// Tabs
 const listTabBtn = document.getElementById('listTabBtn');
 const mapTabBtn = document.getElementById('mapTabBtn');
 const listTab = document.getElementById('listTab');
 const mapTab = document.getElementById('mapTab');
 
-// Function to activate tab
 function activateTab(tab) {
   if (window.innerWidth > 768) {
-    // Desktop: show both, no need for tab switching
     listTab.classList.remove('hidden');
     mapTab.classList.remove('hidden');
-
-    // Remove active styles since both are shown
     listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
     mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
     return;
   }
 
-  // Mobile: normal tab behavior
   if (tab === 'list') {
     listTab.classList.remove('hidden');
     mapTab.classList.add('hidden');
-
     listTabBtn.classList.add('bg-red-700', 'text-white', 'rounded-full');
     listTabBtn.classList.remove('bg-transparent', 'text-gray-800');
-
     mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
     mapTabBtn.classList.add('bg-transparent', 'text-gray-800');
   } else {
     mapTab.classList.remove('hidden');
     listTab.classList.add('hidden');
-
     mapTabBtn.classList.add('bg-red-700', 'text-white', 'rounded-full');
     mapTabBtn.classList.remove('bg-transparent', 'text-gray-800');
-
     listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
     listTabBtn.classList.add('bg-transparent', 'text-gray-800');
   }
 }
 
-// Initial setup: default to 'list' on mobile
+// Initial tab setup
 activateTab(window.innerWidth <= 768 ? 'list' : null);
-
-// Event listeners
 listTabBtn.addEventListener('click', () => activateTab('list'));
 mapTabBtn.addEventListener('click', () => activateTab('map'));
+window.addEventListener('resize', () => activateTab(window.innerWidth <= 768 ? 'list' : null));
 
-// Handle window resize
-window.addEventListener('resize', () => {
-  activateTab(window.innerWidth <= 768 ? 'list' : null);
-});
-
-// window load
+// Hash scroll
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash;
   if (hash) {
     const el = document.querySelector(hash);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 });
 
+// Popup links for share buttons
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.popup-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const url = link.href;
+      const width = 600;
+      const height = 400;
+      const left = (screen.width / 2) - (width / 2);
+      const top = (screen.height / 2) - (height / 2);
+      window.open(
+        url,
+        'popupWindow',
+        `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`
+      );
+    });
+  });
+});
