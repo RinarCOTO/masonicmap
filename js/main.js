@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
       pagination: false,
       arrows: false,
       cover: true,
-      // focus: 'center',
+      focus: 'center',
       trimSpace: false,
       drag: false,
       // perPage: 3,
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     });
     thumbs.on('mounted', () => {
-      thumbs.go(0);
+      thumbs.go(1);
     });
     main.sync(thumbs);
     main.mount();
