@@ -8,23 +8,27 @@ document.addEventListener('DOMContentLoaded', function () {
       rewind: true,
       type: 'fade',
       cover: false,
-      fixedHeight: 528,
-      fixedWidth: 528,
       pagination: false,
       arrows: true,
       cover: true,
+      heightRatio: 1,
     });
 
     const thumbs = new Splide(thumbsEl, {
-      rewind: true,
-      fixedHeight: 58,
+      // rewind: true,
+      // type: 'loop',
       isNavigation: true,
+      fixedWidth: 75,
+      fixedHeight: 75,
+      // autoWidth: true,
       gap: 10,
       pagination: false,
       arrows: false,
       cover: true,
-      focus: true,
-      perPage: 3,
+      // focus: 'center',
+      trimSpace: false,
+      drag: false,
+      // perPage: 3,
       dragMinThreshold: {
         mouse: 4,
         touch: 10,
@@ -32,11 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
       breakpoints: {
         768: {
           perPage: 2,
-          fixedHeight: 58,
         },
       },
     });
-
+    thumbs.on('mounted', () => {
+      thumbs.go(0);
+    });
     main.sync(thumbs);
     main.mount();
     thumbs.mount();
