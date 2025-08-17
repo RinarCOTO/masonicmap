@@ -500,66 +500,84 @@
 		</div>
 	</main>
 
-	<footer class="text-white  p-5 bg-[#221E1F]">
-		<div class="flex flex-col max-w-[90rem] mx-auto w-full gap-5">
-		  <div class="grid grid-cols-3 border-b py-4">
-			<div class="grid gap-5 border-r">
-				<img src="assets/logo-1.webp" alt="Free Mason Black and White Logo" class="w-48 h-12">
-				<address class="not-italic">
-					Grand Lodge of California<br>
-					1111 California Street<br>
-					San Francisco, CA 94108<br>
-				</address>
-				<!-- Phone -->
-				<!-- <a href="tel:+14157767000" class="flex items-center gap-5 popup-link fm-hover">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					  <circle cx="12" cy="12" r="11"/>
-					  <path d="M7.433 10.086V7.028h2.366v3.058zM14.162 16.814v-2.23h3.058v2.23z"/>
-					  <path d="M14.162 16.814c-3.716 0-6.729-3.013-6.729-6.729"/>
-					</svg>
-					(415) 776-7000
-				</a> -->
-				  
-			</div>
+	<footer class="text-white p-5 bg-[#221E1F]">
+		<div class="max-w-[90rem] mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 border-b pb-2">
+		  
+		  <!-- Column 1 (Logo + Address + Phone) -->
+		  <div class="space-y-5 border-r">
+			<img src="assets/logo-1.webp" alt="Free Mason Black and White Logo" class="w-48 h-12">
+			<address class="not-italic">
+			  Grand Lodge of California<br>
+			  1111 California Street<br>
+			  San Francisco, CA 94108<br>
+			</address>
+			<!-- Phone (commented) -->
+			<!--
+			<a href="tel:+14157767000" class="flex items-center gap-3 popup-link fm-hover">
+			  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+				viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+				stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="12" cy="12" r="11"/>
+				<path d="M7.433 10.086V7.028h2.366v3.058zM14.162 16.814v-2.23h3.058v2.23z"/>
+				<path d="M14.162 16.814c-3.716 0-6.729-3.013-6.729-6.729"/>
+			  </svg>
+			  (415) 776-7000
+			</a>
+			-->
+		  </div>
+	  
+		  <!-- Column 2 (Socials) -->
+		  <div class="space-y-5 border-r">
+			<span>Follow us on:</span>
 			<div class="flex flex-row gap-5">
-				<!-- Facebook -->
-				<a href="https://www.facebook.com/MasonsofCalifornia" 
-					aria-label="Open Facebook" 
-					class="fm-hover"
-					target="_blank" rel="noopener noreferrer">
-				
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-						viewBox="0 0 24 24" class="transition-colors">
-						<path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
-							d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
-					</svg>
-				</a>
-				<!-- Twitter -->
-				<a href="https://x.com/MasonsofCA" 
-					aria-label="Open X" 
-					class="fm-hover"
-					target="_blank" rel="noopener noreferrer">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-						viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-						stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-						class="transition-colors">
-					<path d="M4 4l11.733 16H20L8.267 4z"/>
-					<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
-					</svg>
-				</a>
+			  <!-- Facebook -->
+			  <a href="https://www.facebook.com/MasonsofCalifornia" 
+				aria-label="Open Facebook" 
+				class="fm-hover"
+				target="_blank" rel="noopener noreferrer">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+				  viewBox="0 0 24 24" class="transition-colors">
+				  <path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
+					d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
+				</svg>
+			  </a>
+			  <!-- Twitter/X -->
+			  <a href="https://x.com/MasonsofCA" 
+				aria-label="Open X" 
+				class="fm-hover"
+				target="_blank" rel="noopener noreferrer">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+				  viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+				  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+				  class="transition-colors">
+				  <path d="M4 4l11.733 16H20L8.267 4z"/>
+				  <path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
+				</svg>
+			  </a>
 			</div>
 		  </div>
-		  <div class="flex flex-row justify-between fm-hover">
+	  
+		  <!-- Column 3 (Legal Links) -->
+		  <div class="flex flex-col gap-5">
 			<a href="https://freemason.org/about-us/terms-of-use/"
-				target="_blank" rel="noopener noreferrer"
-				>Website Term of Use</a>
+			  target="_blank" rel="noopener noreferrer"
+			  class="fm-hover">Terms of Use</a>
 			<a href="https://freemason.org/about-us/website-privacy-notice/"
-				target="_blank" rel="noopener noreferrer"
-				>Website Privacy Notice</a>
-		  	<div class="" style="font-size: 13px; font-family: var(--font-secondary);">© 2025 Masons of California. All right reserved</div>
+			  target="_blank" rel="noopener noreferrer"
+			  class="fm-hover">Privacy Policy</a>
 		  </div>
+	  
 		</div>
-	</footer>
+	  
+		<!-- Copyright (Bottom Section) -->
+		<div class="mt-5 text-center text-[13px] font-secondary">
+		  © 2025 Masons of California. All rights reserved
+		</div>
+	  </footer>
+	  
+
+	  
+
 	  
 </body>
 </html>
