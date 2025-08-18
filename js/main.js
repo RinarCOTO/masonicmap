@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     rewind: true,
     // fixedWidth: 368,
     // fixedHeight: 175,
-    gap: '2rem',
+    gap: '1rem',
     perPage: 1,
     arrows: false,
     pagination: false,
