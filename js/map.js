@@ -236,21 +236,20 @@
 // Initialize Leaflet Map
 // ============================
 const map = L.map("map", {
-    center: [37.7671, -122.4324], // Initial center coordinates
-    zoom: 13,
-    zoomControl: false,            // Disable default zoom controls
-    scrollWheelZoom: false,        // Disable scroll-to-zoom
-    attributionControl: false      // Remove attribution for cleaner look
+    center: [37.7671, -122.4324],
+    zoom: 15,
+    zoomControl: false,
+    scrollWheelZoom: false,
+    attributionControl: false
   });
   
-  // ============================
-  // Add Light Gray Tile Layer
-  // (similar to previous Google Maps style)
-  // ============================
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  // Apple-style light tiles (soft colors, minimal)
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
     subdomains: "abcd",
-    maxZoom: 19
+    maxZoom: 19,
+    attribution: 'Map tiles by Carto, © OpenStreetMap contributors'
   }).addTo(map);
+  
   
   // ============================
   // Create markers for each article
