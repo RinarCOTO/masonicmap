@@ -274,3 +274,7 @@ article {
   font-size: 16px;
   font-family: var(--font-secondary);
 }
+/* MARKER */
+.custom-marker svg {
+  transform: translate(-12px, -24px);
+}

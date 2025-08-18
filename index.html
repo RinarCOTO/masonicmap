@@ -8,14 +8,16 @@
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="js/main.js" defer></script>
 	<script src="js/map.js" defer></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap" defer></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap&v=weekly&libraries=marker" defer></script> -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="icon" href="assets/freemason_favicon.webp" type="image/webp">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
 
 	<!-- Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 
@@ -63,6 +65,7 @@
 				</div>
 			  </div>
 		<!-- Article List -->
+
 		<div id="listTab" class="w-[40vw] max-md:w-[100vw] p-[20px] space-y-[50px]  ">
 			<div class="mt-[60px] space-y-[30px] flex flex-col items-center ">
 				<img class="mb-[10px]" src="assets/grey-logo.webp" alt="">
@@ -70,7 +73,7 @@
 				<hr class="border-b border-[#a41c215e] w-[70%]">
 				<p>Freemasonry is the world’s first and largest fraternal organization. It is guided by the enduring belief that everyone has a responsibility to make the world a better place.  For 300 years, Freemasonry has enhanced and strengthened the character of individual men by providing opportunities for fellowship, charity, and the search for truth – within ourselves and the larger world.  Through Freemasonry, we make true friends, improve ourselves, and have a positive impact on our communities. </p>
 			</div>
-			<article id="swedish-american-hall" class="flex flex-col gap-[20px] ">
+			<article id="swedish-american-hall"  class="flex flex-col gap-[20px]" data-lat="37.7671" data-lng="-122.4324">
 
 				<!-- Article Header -->
 				<header class="flex flex-col gap-5">
@@ -110,7 +113,7 @@
 					</div>
 				</header>
 				<!-- Address -->
-					<div class="flex gap-5 border-y fm-border py-[11px] items-center w-[70vw]">
+					<div class="flex gap-5 border-y fm-border py-[11px] items-center w-[30vw]">
 						<svg 
 							style="fill: var(--icon);" 
 							id="Pin_24" 
@@ -134,7 +137,7 @@
 				</p>
 				<div>
 					<!-- Visit Website -->
-					<div class="flex items-center gap-5 py-[11px] w-[70vw] border-b fm-hover fm-border">
+					<div class="flex items-center gap-5 py-[11px] w-[30vw] border-b fm-hover fm-border">
 						<a href="https://swedishamericanhall.com/" 
 						   class="flex items-center gap-5"
 						   target="_blank">
@@ -150,7 +153,7 @@
 					  
 				  
 					<!-- Share Section -->
-					  <div class=" flex gap-5 py-[11px] border-b fm-border items-center w-[70vw]">
+					  <div class=" flex gap-5 py-[11px] border-b fm-border items-center w-[30vw]">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						  <path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
 								d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
@@ -225,7 +228,8 @@
                 <hr class="solid-thin">
             </div>
 
-			<article id="king-solomon-temple" class="flex flex-col gap-[30px] pb-[20px]">
+			<article id="king-solomon-temple" class="flex flex-col gap-[30px] pb-[20px]" data-lat="37.7833" data-lng="-122.4370"
+			>
 
 				<!-- Article Header -->
 				<header class="flex flex-col gap-[10px]">
@@ -272,7 +276,7 @@
 				<div class="fm-social">
 					<!-- Address -->
 					<a href="#" target="_blank" class="block fm-hover">
-					  <div class="flex items-center gap-5 py-[11px] border-b fm-border w-[70vw]">
+					  <div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw]">
 						<svg 
 						  style="fill: var(--icon);" 
 						  id="Pin_24" 
@@ -294,7 +298,7 @@
 				  
 					<!-- Visit Website -->
 					<div class="fm-hover">
-					  <a href="#" target="_blank" class="flex items-center gap-5 py-[11px] border-b fm-border w-[70vw]">
+					  <a href="#" target="_blank" class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw]">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
 							 viewBox="0 0 24 24" stroke-width="1.5" 
 							 stroke="currentColor" class="size-6">
@@ -306,7 +310,7 @@
 					</div>
 				  
 					<!-- Share Section -->
-					<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[70vw]">
+					<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw]">
 					  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 						   viewBox="0 0 24 24">
 						<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
@@ -369,7 +373,8 @@
                 <hr class="solid-thick">
                 <hr class="solid-thin">
             </div>
-            <article id="richmond-masonic-temple" class="flex flex-col gap-[30px] pb-[20px]">
+            <article id="richmond-masonic-temple" class="flex flex-col gap-[30px] pb-[20px]" data-lat="37.7798" data-lng="-122.4680"
+			>
 
 				<!-- Article Header -->
 				<header class="flex flex-col gap-[10px]">
