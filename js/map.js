@@ -235,6 +235,9 @@
 // ============================
 // Initialize Leaflet Map
 // ============================
+// ============================
+// Map setup
+// ============================
 const map = L.map("map", {
     center: [37.7671, -122.4324],
     zoom: 15,
@@ -243,16 +246,16 @@ const map = L.map("map", {
     attributionControl: false
   });
   
-  // Apple-style light tiles (soft colors, minimal)
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    subdomains: "abcd",
-    maxZoom: 19,
-    attribution: 'Map tiles by Carto, © OpenStreetMap contributors'
+  // Apple-style light tiles
+  L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+    id: "mapbox/streets-v11",
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: "pk.eyJ1IjoicmluYXJza2kiLCJhIjoiY21laG0zdGl5MDV5cDJtb2g4d2lxajZreCJ9.jEW1tOkw2P8WcvH2CrmDAA"
   }).addTo(map);
   
-  
   // ============================
-  // Create markers for each article
+  // Create markers
   // ============================
   const articles = document.querySelectorAll("article[data-lat][data-lng]");
   const markers = [];
@@ -261,17 +264,17 @@ const map = L.map("map", {
     const lat = parseFloat(article.dataset.lat);
     const lng = parseFloat(article.dataset.lng);
   
-    // Create a custom HTML marker using Leaflet's divIcon
     const marker = L.marker([lat, lng], {
       icon: L.divIcon({
         className: "custom-marker",
         html: `
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path d="M12 0C7.58 0 4 3.58 4 8c0 3.51 5 11.99 7.15 15.52a1 1 0 0 0 1.7 0C15 20 20 11.51 20 8c0-4.42-3.58-8-8-8zM12 11.5A3.5 3.5 0 1 1 15.5 8 3.5 3.5 0 0 1 12 11.5z" fill="red"/>
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="16" fill="red"/>
+            <circle cx="16" cy="16" r="8" fill="white"/>
           </svg>
         `,
-        iconSize: [24, 24],
-        iconAnchor: [12, 24] // Anchor at bottom center of marker
+        iconSize: [32, 32],
+        iconAnchor: [16, 32]
       }),
       title: article.querySelector("h2")?.textContent || ""
     }).addTo(map);
@@ -280,7 +283,7 @@ const map = L.map("map", {
   });
   
   // ============================
-  // Helper: Get article currently in viewport center
+  // Helper: Get current article in viewport
   // ============================
   function getCurrentArticle() {
     const scrollMiddle = window.scrollY + window.innerHeight / 2;
@@ -289,34 +292,50 @@ const map = L.map("map", {
       const top = rect.top + window.scrollY;
       const bottom = top + rect.height;
       return scrollMiddle >= top && scrollMiddle < bottom;
-    }) || articles[0]; // Default to first article if none found
+    }) || articles[0];
   }
   
   // ============================
-  // Scroll handler: update map only when active article changes
+  // Scroll handler: update map & markers
   // ============================
   let activeArticle = null;
   
   window.addEventListener("scroll", () => {
     const current = getCurrentArticle();
-    if (current === activeArticle) return; // Skip if same article
+    if (current === activeArticle) return;
   
     activeArticle = current;
   
     const lat = parseFloat(current.dataset.lat);
     const lng = parseFloat(current.dataset.lng);
   
-    // Smoothly fly to the new location
-    map.flyTo([lat, lng], 17, { duration: 1 });
+    // Smooth fly to active location
+    map.flyTo([lat, lng], 15, { duration: 1 });
   
-    // Highlight the active marker
+    // Update markers
     markers.forEach((marker, i) => {
       const markerEl = marker.getElement();
-      if (markerEl) {
-        if (articles[i] === current) markerEl.classList.add("active");
-        else markerEl.classList.remove("active");
+      if (!markerEl) return;
+  
+      if (articles[i] === current) {
+        // Active marker: use full pin SVG
+        markerEl.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path fill="red" fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518Z" clip-rule="evenodd"/>
+            <circle cx="12" cy="10" r="3" fill="white"/>
+          </svg>
+        `;
+        markerEl.classList.add("active"); // optional pulse animation
+      } else {
+        // Inactive marker: red circle with white center
+        markerEl.innerHTML = `
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="16" fill="red"/>
+            <circle cx="16" cy="16" r="8" fill="white"/>
+          </svg>
+        `;
+        markerEl.classList.remove("active");
       }
     });
   });
-  
   

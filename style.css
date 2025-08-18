@@ -275,6 +275,24 @@ article {
   font-family: var(--font-secondary);
 }
 /* MARKER */
+/* Default marker: small red circle */
 .custom-marker svg {
-  transform: translate(-12px, -24px);
+  width: 42px;
+  height: 42px;
+  transition: all 0.3s ease;
 }
+
+/* .custom-marker circle {
+  fill: red;
+  stroke: white;
+  stroke-width: 2;
+} */
+
+/* Hover effect: scale up and add shadow */
+.custom-marker:hover svg {
+  transform: scale(1.2);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+
+
