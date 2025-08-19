@@ -31,7 +31,7 @@
 		</div>
 		<hr class="solid-bottom ">
 	</header>
-	<main class="flex max-w-[90rem] mx-auto mt-[140px] max-md:mt-[40px]">
+	<main class="flex px-[50px] max-md:px-1 mx-auto mt-[140px] max-md:mt-[40px]">
   
 		    <!-- Mobile Tabs -->
 			<div class="hidden max-md:block w-[132px] border-2 border-white rounded-full fixed bottom-5 left-1/2 -translate-x-1/2 bg-white z-50 drop-shadow-lg">
@@ -113,7 +113,7 @@
 					</div>
 				</header>
 				<!-- Address -->
-					<div class="flex gap-5 border-y fm-border py-[11px] items-center w-[30vw]">
+					<div class="flex gap-5 border-y fm-border py-[11px] items-center w-[30vw] max-md:w-[70vw]">
 						<svg 
 							style="fill: var(--icon);" 
 							id="Pin_24" 
@@ -137,7 +137,7 @@
 				</p>
 				<div>
 					<!-- Visit Website -->
-					<div class="flex items-center gap-5 py-[11px] w-[30vw] border-b fm-hover fm-border">
+					<div class="flex items-center gap-5 py-[11px] w-[30vw] max-md:w-[70vw] border-b fm-hover fm-border">
 						<a href="https://swedishamericanhall.com/" 
 						   class="flex items-center gap-5"
 						   target="_blank">
@@ -153,7 +153,7 @@
 					  
 				  
 					<!-- Share Section -->
-					  <div class=" flex gap-5 py-[11px] border-b fm-border items-center w-[30vw]">
+					  <div class=" flex gap-5 py-[11px] border-b fm-border items-center w-[30vw] max-md:w-[70vw]">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 						  <path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
 								d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
@@ -276,7 +276,7 @@
 				<div class="fm-social">
 					<!-- Address -->
 					<a href="#" target="_blank" class="block fm-hover">
-					  <div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw]">
+					  <div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
 						<svg 
 						  style="fill: var(--icon);" 
 						  id="Pin_24" 
@@ -298,7 +298,7 @@
 				  
 					<!-- Visit Website -->
 					<div class="fm-hover">
-					  <a href="#" target="_blank" class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw]">
+					  <a href="#" target="_blank" class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
 							 viewBox="0 0 24 24" stroke-width="1.5" 
 							 stroke="currentColor" class="size-6">
@@ -310,7 +310,7 @@
 					</div>
 				  
 					<!-- Share Section -->
-					<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw]">
+					<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
 					  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 						   viewBox="0 0 24 24">
 						<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
@@ -445,7 +445,7 @@
                     </section>
 				</div>
 				                <!-- Address -->
-								<div class="w-[70%] max-md:w-full flex gap-[20px] py-[11px] border-y fm-border items-center">
+								<div class="w-[30vw] max-md:w-[70vw] flex gap-[20px] py-[11px] border-y fm-border items-center">
 									<svg 
 										style="fill: var(--icon);" 
 										id="Pin_24" 
@@ -470,7 +470,7 @@
 
 		<!-- Map section -->
 		<div id="mapTab" class="fm-map-wrapper w-[60vw] p-[20px] fm-border-l pb-[20px] max-md:w-[100vw] max-md:p-[0px]">
-			<div id="map" class="h-[90vh] w-full max-md:h-[100vh]"></div>
+			<div id="map" class="h-[90vh] sticky w-full max-md:h-[100vh]"></div>
             <div>
                 <!-- <section class="py-[20px] max-md:hidden">More Maps</section>
                 <section class="splide splide-posts-carousel max-md:hidden" aria-label="Posts Carousel">
@@ -504,34 +504,33 @@
                     </div>
                 </section> -->
 				<!-- Mobile Slider -->
-				<div id="mobile-slider" class="splide hidden max-md:block fixed bottom-[80px]  z-50 drop-shadow-lg w-full">
+				<div id="mobile-slider" class="splide hidden max-md:block fixed bottom-[100px]  z-50 drop-shadow-lg w-full">
 					<div class="splide__track ">
 					<ul class="splide__list">
-						<li class="splide__slide p-4 bg-white fm-mobile-slider">
-							<div class="flex flex-col gap-1">
+						<li class="splide__slide p-4 bg-white fm-mobile-slider"  data-lat="37.7671" data-lng="-122.4324">
+							<article class="flex flex-col gap-1">
 								<h3 class="font-extrabold">Swedish American Hall 1</h3>
 								<address class="text-sm">2174 Market Street</address>
 								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
 								<button class="mx-auto mt-2">More info</button>
-							</div>
+							</article>
 
 						</li>
-						<li class="splide__slide p-4 bg-white fm-mobile-slider">
-							<div class="flex flex-col gap-1">
-								<h3 class="font-extrabold">Swedish American Hall</h3>
-								<address class="text-sm">2174 Market Street</address>
-								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-								<button class="mx-auto mt-2">More info</button>
-							</div>
-
+						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7798" data-lng="-122.4680">
+							<article class="flex flex-col gap-1">
+							  <h3>King Solomon’s Temple</h3>
+							  <address class="text-sm">2135 Sutter</address>
+							  <p>Some description of Restaurant 2.</p>
+							  <button class="mx-auto mt-2">More info</button>
+							</article>
 						</li>
-						<li class="splide__slide p-4 bg-white fm-mobile-slider">
-							<h3>Restaurant 2</h3>
-							<p>Some description of Restaurant 2.</p>
-						</li>
-						<li class="splide__slide p-4 bg-white fm-mobile-slider">
-							<h3>Restaurant 3</h3>
-							<p>Some description of Restaurant 3.</p>
+						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7798" data-lng="-122.4680">
+							<article class="flex flex-col gap-1">
+							  <h3>Richmond Masonic Temple</h3>
+							  <address class="text-sm">2174 Market Street</address>
+							  <p>Some description of Restaurant 2.</p>
+							  <button class="mx-auto mt-2">More info</button>
+							</article>
 						</li>
 					</ul>
 					</div>
@@ -541,7 +540,7 @@
 	</main>
 
 	<footer class="text-white p-5 bg-[#221E1F]">
-		<div class="max-w-[90rem] mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 border-b pb-2">
+		<div class=" mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 border-b pb-2">
 		  
 		  <!-- Column 1 (Logo + Address + Phone) -->
 		  <div class="space-y-5 border-r max-md:border-none">

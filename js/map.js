@@ -240,14 +240,15 @@
 // ============================
 const map = L.map("map", {
     center: [37.7671, -122.4324],
-    zoom: 15,
-    zoomControl: false,
+    zoom: 19,
+    zoomControl: true,
     scrollWheelZoom: false,
-    attributionControl: false
+    attributionControl: false,
+    
   });
   
   // Apple-style light tiles
-  L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}`, {
+  L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token={accessToken}`, {
     id: "mapbox/streets-v11",
     tileSize: 512,
     zoomOffset: -1,
@@ -320,10 +321,10 @@ const map = L.map("map", {
       if (articles[i] === current) {
         // Active marker: use full pin SVG
         markerEl.innerHTML = `
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <path fill="red" fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518Z" clip-rule="evenodd"/>
-            <circle cx="12" cy="10" r="3" fill="white"/>
-          </svg>
+<svg width="60" height="50" viewBox="0 0 24 24">
+        <path fill="red" fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518Z" clip-rule="evenodd"/>
+        <circle cx="12" cy="10" r="4" fill="white"/>
+      </svg>
         `;
         markerEl.classList.add("active"); // optional pulse animation
       } else {
@@ -338,4 +339,54 @@ const map = L.map("map", {
       }
     });
   });
+  // ============================
+// Mobile slider + map sync
+// ============================
+
+// Initialize Splide
+const mobileSlider = new Splide("#mobile-slider", {
+    type: 'loop',
+    perPage: 1,
+    gap: "1rem",
+    pagination: false,
+    arrows: true,
+  }).mount();
   
+  // Listen to slide change
+  mobileSlider.on("move", (newIndex) => {
+    const article = articles[newIndex];
+    const lat = parseFloat(article.dataset.lat);
+    const lng = parseFloat(article.dataset.lng);
+  
+    // Fly map to the new location
+    map.flyTo([lat, lng], 17, { duration: 1 });
+  
+    // Highlight active marker
+    markers.forEach((marker, i) => {
+      const markerEl = marker.getElement();
+      if (!markerEl) return;
+  
+      if (i === newIndex) {
+        markerEl.innerHTML = `
+          <svg width="36" height="36" viewBox="0 0 24 24">
+            <path fill="red" fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518Z" clip-rule="evenodd"/>
+            <circle cx="12" cy="10" r="4" fill="white"/>
+          </svg>
+        `;
+        markerEl.style.filter = "drop-shadow(0 2px 6px rgba(0,0,0,0.3))";
+      } else {
+        markerEl.innerHTML = `
+          <svg width="32" height="32" viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="16" fill="red"/>
+            <circle cx="16" cy="16" r="8" fill="white"/>
+          </svg>
+        `;
+        markerEl.style.filter = "none";
+      }
+    });
+  });
+  
+map.touchZoom.disable();
+map.scrollWheelZoom.disable();
+map.doubleClickZoom.disable();
+map.keyboard.disable();

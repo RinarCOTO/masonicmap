@@ -190,7 +190,8 @@ color: var(--color-secondary);
 }
 .solid-bottom{
   border-bottom: 1px solid var(--color-border);
-  width: 90rem;
+
+  width: 90%;
   margin: 0 auto;
 }
 .fm-header.shrink .solid-bottom {
@@ -264,9 +265,9 @@ article {
   height: 175px;
 } */
  .fm-mobile-slider {
-  width: 350px;
+  width: 368px!important;
   height: 175px;
-  padding: 0;
+  padding: 16px;
   box-sizing: border-box;
   flex-shrink: 0;
 }
@@ -276,11 +277,11 @@ article {
 }
 /* MARKER */
 /* Default marker: small red circle */
-.custom-marker svg {
+/* .custom-marker svg {
   width: 42px;
   height: 42px;
   transition: all 0.3s ease;
-}
+} */
 
 /* .custom-marker circle {
   fill: red;
