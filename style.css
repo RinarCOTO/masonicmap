@@ -246,7 +246,7 @@ body{
     min-height: 200px;
   }
   .main-slider .splide__track {
-    height: 388px !important; /* force override */
+    height: 388px !important;
   }
 
 }
@@ -276,24 +276,60 @@ article {
   font-family: var(--font-secondary);
 }
 /* MARKER */
-/* Default marker: small red circle */
-/* .custom-marker svg {
-  width: 42px;
-  height: 42px;
-  transition: all 0.3s ease;
-} */
-
-/* .custom-marker circle {
-  fill: red;
-  stroke: white;
-  stroke-width: 2;
-} */
-
-/* Hover effect: scale up and add shadow */
 .custom-marker:hover svg {
   transform: scale(1.2);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 
+/* Map always in the background */
+/* Make sure map container never covers anything */
+/* #map {
+  position: relative;
+  z-index: 0 !important;
+} */
 
+/* Force slider on top of map layers */
+/* #mobile-slider {
+  position: fixed;
+  z-index: 5000 !important;
+} */
+
+/* Fullscreen detail view above everything */
+/* .detail-view {
+  position: fixed;
+  z-index: 10000 !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white; 
+} */
+/* Full-screen overlay */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;           /* above slider and map */
+  background: #fff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+}
+
+/* lock background when open */
+body.detail-open {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
+/* optional enter/exit animation */
+.detail-overlay {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.detail-overlay.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

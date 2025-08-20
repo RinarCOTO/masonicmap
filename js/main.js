@@ -148,6 +148,40 @@ document.addEventListener('DOMContentLoaded', function () {
       );
     });
   });
+// ================================
+// Global Slide Detail Overlay
+// ================================
+const detailOverlay = document.getElementById("detailOverlay");
+const detailContent = document.getElementById("detailContent");
+const closeDetailOverlay = document.getElementById("closeDetailOverlay");
+
+// Open overlay with slide content
+document.querySelectorAll(".more-info-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const slide = btn.closest(".splide__slide");
+    const content = slide.querySelector(".detail-view");
+
+    if (content) {
+      detailContent.innerHTML = content.innerHTML; // clone slide content
+      detailOverlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden"; // lock scroll
+    }
+  });
+});
+
+// Close overlay
+function closeOverlay() {
+  detailOverlay.classList.add("hidden");
+  detailContent.innerHTML = "";
+  document.body.style.overflow = ""; // restore scroll
+}
+
+closeDetailOverlay.addEventListener("click", closeOverlay);
+
+// Close overlay when clicking backdrop
+detailOverlay.addEventListener("click", (e) => {
+  if (e.target === detailOverlay) closeOverlay();
+});
 
 });
 

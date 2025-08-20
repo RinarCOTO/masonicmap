@@ -504,37 +504,75 @@
                     </div>
                 </section> -->
 				<!-- Mobile Slider -->
-				<div id="mobile-slider" class="splide hidden max-md:block fixed bottom-[100px]  z-50 drop-shadow-lg w-full">
-					<div class="splide__track ">
-					<ul class="splide__list">
-						<li class="splide__slide p-4 bg-white fm-mobile-slider"  data-lat="37.7671" data-lng="-122.4324">
-							<article class="flex flex-col gap-1">
-								<h3 class="font-extrabold">Swedish American Hall 1</h3>
-								<address class="text-sm">2174 Market Street</address>
-								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-								<button class="mx-auto mt-2">More info</button>
-							</article>
-
+				<div id="mobile-slider" class="splide hidden max-md:block fixed bottom-[100px] z-50 drop-shadow-lg w-full">
+					<div class="splide__track">
+					  <ul class="splide__list">
+						<!-- Slide 1 -->
+						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7671" data-lng="-122.4324">
+						  <article class="flex flex-col gap-1 summary-view">
+							<h3 class="font-extrabold">Swedish American Hall 1</h3>
+							<address class="text-sm">2174 Market Street</address>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+							<button class="mx-auto mt-2 more-info-btn">More info</button>
+						  </article>
+				  
+						  <!-- Hidden detail content -->
+						  <article class="detail-view hidden">
+							<div class="p-5">
+							  <h3 class="font-bold mb-3">Swedish American Hall 1</h3>
+							  <p>Full detail text for slide 1…</p>
+							</div>
+						  </article>
 						</li>
+				  
+						<!-- Slide 2 -->
 						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7798" data-lng="-122.4680">
-							<article class="flex flex-col gap-1">
-							  <h3>King Solomon’s Temple</h3>
-							  <address class="text-sm">2135 Sutter</address>
-							  <p>Some description of Restaurant 2.</p>
-							  <button class="mx-auto mt-2">More info</button>
-							</article>
+						  <article class="flex flex-col gap-1 summary-view">
+							<h3>King Solomon’s Temple</h3>
+							<address class="text-sm">2135 Sutter</address>
+							<p>Some description of Restaurant 2.</p>
+							<button class="mx-auto mt-2 more-info-btn">More info</button>
+						  </article>
+				  
+						  <article class="detail-view hidden">
+							<div class="p-5">
+							  <h3 class="font-bold mb-3">King Solomon’s Temple</h3>
+							  <p>Full detail text for slide 2…</p>
+							</div>
+						  </article>
 						</li>
+				  
+						<!-- Slide 3 -->
 						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7798" data-lng="-122.4680">
-							<article class="flex flex-col gap-1">
-							  <h3>Richmond Masonic Temple</h3>
-							  <address class="text-sm">2174 Market Street</address>
-							  <p>Some description of Restaurant 2.</p>
-							  <button class="mx-auto mt-2">More info</button>
-							</article>
+						  <article class="flex flex-col gap-1 summary-view">
+							<h3>Richmond Masonic Temple</h3>
+							<address class="text-sm">2174 Market Street</address>
+							<p>Some description of Restaurant 3.</p>
+							<button class="mx-auto mt-2 more-info-btn">More info</button>
+						  </article>
+				  
+						  <article class="detail-view hidden">
+							<div class="p-5">
+							  <h3 class="font-bold mb-3">Richmond Masonic Temple</h3>
+							  <p>Full detail text for slide 3…</p>
+							</div>
+						  </article>
 						</li>
-					</ul>
+					  </ul>
 					</div>
-				</div>
+					
+				  </div>
+				  <!-- Global Detail Overlay -->
+					<div id="detailOverlay" class="fixed inset-0 bg-black/70 hidden z-[2000] flex items-center justify-center h-full top-20">
+						<div class="bg-white w-[100%] max-w-2xl  relative p-6 h-[90%]">
+						<!-- Close Button -->
+						<button id="closeDetailOverlay" class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl">&times;</button>
+						
+						<!-- Dynamic content goes here -->
+						<div id="detailContent"></div>
+						</div>
+					</div>
+  
             </div>
 		</div>
 	</main>
