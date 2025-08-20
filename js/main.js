@@ -78,24 +78,22 @@ document.addEventListener('DOMContentLoaded', function () {
     dragMinThreshold: { mouse: 20, touch: 20 }
   }).mount();
 
-
-  // ================================
-  // Tabs
-  // ================================
   const listTabBtn = document.getElementById('listTabBtn');
   const mapTabBtn = document.getElementById('mapTabBtn');
   const listTab = document.getElementById('listTab');
   const mapTab = document.getElementById('mapTab');
-
+  const footer = document.getElementById('footer'); // 👈 grab footer
+  
   function activateTab(tab) {
     if (window.innerWidth > 768) {
       listTab.classList.remove('hidden');
       mapTab.classList.remove('hidden');
       listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
       mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
+      footer.classList.remove('hidden'); // 👈 always show footer on desktop
       return;
     }
-
+  
     if (tab === 'list') {
       listTab.classList.remove('hidden');
       mapTab.classList.add('hidden');
@@ -103,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
       listTabBtn.classList.remove('bg-transparent', 'text-gray-800');
       mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
       mapTabBtn.classList.add('bg-transparent', 'text-gray-800');
+      footer.classList.remove('hidden'); // 👈 show footer in list tab
     } else {
       mapTab.classList.remove('hidden');
       listTab.classList.add('hidden');
@@ -110,13 +109,15 @@ document.addEventListener('DOMContentLoaded', function () {
       mapTabBtn.classList.remove('bg-transparent', 'text-gray-800');
       listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
       listTabBtn.classList.add('bg-transparent', 'text-gray-800');
+      footer.classList.add('hidden'); // 👈 hide footer in map tab
     }
   }
-
+  
   activateTab(window.innerWidth <= 768 ? 'list' : null);
   listTabBtn.addEventListener('click', () => activateTab('list'));
   mapTabBtn.addEventListener('click', () => activateTab('map'));
   window.addEventListener('resize', () => activateTab(window.innerWidth <= 768 ? 'list' : null));
+  
 
 
   // ================================

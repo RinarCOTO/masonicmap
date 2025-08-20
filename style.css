@@ -240,13 +240,17 @@ body{
     padding: 1rem;
   }
   .fm-header.shrink .fm-logo {
-    padding: 6px 0;
+    padding: 10px 0;
   }
   .main-slider .main-slider {
     min-height: 200px;
   }
   .main-slider .splide__track {
     height: 388px !important;
+  }
+  /* Others */
+  .fm-border-l{
+    border: none;
   }
 
 }

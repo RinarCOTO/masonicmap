@@ -31,7 +31,7 @@
 		</div>
 		<hr class="solid-bottom ">
 	</header>
-	<main class="flex px-[50px] max-md:px-1 mx-auto mt-[140px] max-md:mt-[40px]">
+	<main class="flex px-[50px] max-md:px-1 mx-auto mt-[140px] max-md:mt-[0px]">
   
 		    <!-- Mobile Tabs -->
 			<div class="hidden max-md:block w-[132px] border-2 border-white rounded-full fixed bottom-5 left-1/2 -translate-x-1/2 bg-white z-50 drop-shadow-lg">
@@ -520,7 +520,9 @@
 						  <article class="detail-view hidden">
 							<div class="p-5">
 							  <h3 class="font-bold mb-3">Swedish American Hall 1</h3>
-							  <p>Full detail text for slide 1…</p>
+							  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, commodi! Nostrum ullam magnam autem aliquid pariatur molestiae quasi repudiandae error fugiat libero natus modi nam iste magni in, illo consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam corrupti autem iure laborum tempora officia in ab est eos? At eius incidunt vitae iste totam eum dolores harum fugiat ducimus.</p>
+							  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, commodi! Nostrum ullam magnam autem aliquid pariatur molestiae quasi repudiandae error fugiat libero natus modi nam iste magni in, illo consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam corrupti autem iure laborum tempora officia in ab est eos? At eius incidunt vitae iste totam eum dolores harum fugiat ducimus.</p>
+							  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, commodi! Nostrum ullam magnam autem aliquid pariatur molestiae quasi repudiandae error fugiat libero natus modi nam iste magni in, illo consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam corrupti autem iure laborum tempora officia in ab est eos? At eius incidunt vitae iste totam eum dolores harum fugiat ducimus.</p>
 							</div>
 						  </article>
 						</li>
@@ -562,22 +564,23 @@
 					</div>
 					
 				  </div>
-				  <!-- Global Detail Overlay -->
-					<div id="detailOverlay" class="fixed inset-0 bg-black/70 hidden z-[2000] flex items-center justify-center h-full top-20">
-						<div class="bg-white w-[100%] max-w-2xl  relative p-6 h-[90%]">
-						<!-- Close Button -->
-						<button id="closeDetailOverlay" class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl">&times;</button>
-						
-						<!-- Dynamic content goes here -->
-						<div id="detailContent"></div>
-						</div>
-					</div>
+<!-- Global Detail Overlay -->
+<div id="detailOverlay" class="fixed inset-0 bg-black/70 hidden z-[2000] flex items-center justify-center h-full top-20">
+	<div class="bg-white w-[100%] max-w-2xl relative p-6 h-[90%] overflow-y-auto rounded-xl">
+	  <!-- Close Button -->
+	  <button id="closeDetailOverlay" class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl">&times;</button>
+  
+	  <!-- Dynamic content goes here -->
+	  <div id="detailContent" class="space-y-4"></div>
+	</div>
+  </div>
+  
   
             </div>
 		</div>
 	</main>
 
-	<footer class="text-white p-5 bg-[#221E1F]">
+	<footer id="footer" class="text-white p-5 bg-[#221E1F]">
 		<div class=" mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 border-b pb-2">
 		  
 		  <!-- Column 1 (Logo + Address + Phone) -->
