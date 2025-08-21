@@ -79,9 +79,23 @@ footer a {
   font-weight: 900 !important;
 }
 /* SPLIDER */
-.main-slider .splide__track{
-  height: 528px;
+/* Let Splide decide the height, just center content */
+.main-slider .splide__slide {
+  display: flex !important;  /* override inline-block default */
+  align-items: center;
+  justify-content: center;
 }
+
+/* Keep media proportional and inside the slide */
+.main-slider .splide__slide img,
+.main-slider .splide__slide video {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
 .thumbnail-slider .splide__track{
   height: 100px;
   justify-content: center;

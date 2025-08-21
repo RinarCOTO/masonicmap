@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
     new Splide(postCarousel, {
       type: 'slide',
       perPage: 3,
-      // gap: '1rem',
       pagination: false,
       arrows: false,
       drag: true,
@@ -64,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
   new Splide('#mobile-slider', {
     type: 'loop',
     rewind: true,
-    // fixedWidth: 368,
-    // fixedHeight: 175,
     gap: '1rem',
     perPage: 1,
     arrows: false,
@@ -73,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     drag: true,
     snap: true,
     autoWidth: true,
-    // perMove: 1,
+    perMove: 1,
     focus: 'center',
     dragMinThreshold: { mouse: 20, touch: 20 }
   }).mount();
@@ -82,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const mapTabBtn = document.getElementById('mapTabBtn');
   const listTab = document.getElementById('listTab');
   const mapTab = document.getElementById('mapTab');
-  const footer = document.getElementById('footer'); // 👈 grab footer
+  const footer = document.getElementById('footer'); 
   
   function activateTab(tab) {
     if (window.innerWidth > 768) {
@@ -90,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
       mapTab.classList.remove('hidden');
       listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
       mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
-      footer.classList.remove('hidden'); // 👈 always show footer on desktop
+      footer.classList.remove('hidden');
       return;
     }
   
@@ -101,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
       listTabBtn.classList.remove('bg-transparent', 'text-gray-800');
       mapTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
       mapTabBtn.classList.add('bg-transparent', 'text-gray-800');
-      footer.classList.remove('hidden'); // 👈 show footer in list tab
+      footer.classList.remove('hidden');
     } else {
       mapTab.classList.remove('hidden');
       listTab.classList.add('hidden');
@@ -109,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
       mapTabBtn.classList.remove('bg-transparent', 'text-gray-800');
       listTabBtn.classList.remove('bg-red-700', 'text-white', 'rounded-full');
       listTabBtn.classList.add('bg-transparent', 'text-gray-800');
-      footer.classList.add('hidden'); // 👈 hide footer in map tab
+      footer.classList.add('hidden');
     }
   }
   
