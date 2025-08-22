@@ -57,24 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  // ================================
-  // Mobile Slider
-  // ================================
-  // new Splide('#mobile-slider', {
-  //   type: 'loop',
-  //   rewind: true,
-  //   gap: '1rem',
-  //   perPage: 1,
-  //   arrows: false,
-  //   pagination: false,
-  //   drag: true,
-  //   snap: true,
-  //   autoWidth: true,
-  //   perMove: 1,
-  //   focus: 'center',
-  //   dragMinThreshold: { mouse: 20, touch: 20 }
-  // }).mount();
-
   const listTabBtn = document.getElementById('listTabBtn');
   const mapTabBtn = document.getElementById('mapTabBtn');
   const listTab = document.getElementById('listTab');
@@ -189,10 +171,19 @@ detailOverlay.addEventListener("click", (e) => {
 // ================================
 const header = document.getElementById('fm-main-header');
 const scrollThreshold = 100;
+
+// Auto-add shrink on mobile
+if (window.innerWidth <= 768) {
+  header.classList.add('shrink');
+}
+
 window.addEventListener('scroll', () => {
-  if (window.scrollY > scrollThreshold) header.classList.add('shrink');
-  else header.classList.remove('shrink');
+  if (window.innerWidth > 768) {
+    if (window.scrollY > scrollThreshold) header.classList.add('shrink');
+    else header.classList.remove('shrink');
+  }
 });
+
 
 
 // ================================
