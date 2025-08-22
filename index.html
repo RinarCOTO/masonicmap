@@ -8,7 +8,7 @@
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="js/main.js" defer></script>
 	<script src="js/map.js" defer></script>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnjz1rKU68lphkM6n2A1qMTR75QvykzR0&callback=initMap&v=weekly&libraries=marker" defer></script> -->
+
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -34,7 +34,7 @@
 	<main class="flex px-[80px] max-md:px-1 mx-auto mt-[140px] max-md:mt-[0px]">
   
 		    <!-- Mobile Tabs -->
-			<div class="hidden max-md:block w-[132px] border-2 border-white rounded-full fixed bottom-5 left-1/2 -translate-x-1/2 bg-white z-50 drop-shadow-lg">
+			<div class="hidden max-md:block w-[132px] border-2 border-white rounded-full fixed bottom-5 left-1/2 -translate-x-1/2 bg-white z-50 fm-drop-shadow">
 				<div class="flex">
 				  <!-- LIST button -->
 				  <button 
@@ -510,7 +510,7 @@
 						<!-- Slide 1 -->
 						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7671" data-lng="-122.4324">
 						  <article class="flex flex-col gap-1 summary-view">
-							<h3 class="font-extrabold">Swedish American Hall 1</h3>
+							<h3 class="font-extrabold">number 1 slide</h3>
 							<address class="text-sm">2174 Market Street</address>
 							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
 							<button class="mx-auto mt-2 more-info-btn">More info</button>
@@ -524,22 +524,20 @@
 							</div>
 						  </article>
 						</li>
-				  
 						<!-- Slide 2 -->
-						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7798" data-lng="-122.4680">
-						  <article class="flex flex-col gap-1 summary-view">
+						<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7833" data-lng="-122.4370">
+							<article class="flex flex-col gap-1 summary-view">
 							<h3>King Solomon’s Temple</h3>
 							<address class="text-sm">2135 Sutter</address>
 							<p>Some description of Restaurant 2.</p>
 							<button class="mx-auto mt-2 more-info-btn">More info</button>
-						  </article>
-				  
-						  <article class="detail-view hidden">
+							</article>
+							<article class="detail-view hidden">
 							<div class="p-5">
-							  <h3 class="font-bold mb-3">King Solomon’s Temple</h3>
-							  <p>Full detail text for slide 2…</p>
+								<h3 class="font-bold mb-3">King Solomon’s Temple</h3>
+								<p>Full detail text for slide 2…</p>
 							</div>
-						  </article>
+							</article>
 						</li>
 				  
 						<!-- Slide 3 -->

@@ -60,20 +60,20 @@ document.addEventListener('DOMContentLoaded', function () {
   // ================================
   // Mobile Slider
   // ================================
-  new Splide('#mobile-slider', {
-    type: 'loop',
-    rewind: true,
-    gap: '1rem',
-    perPage: 1,
-    arrows: false,
-    pagination: false,
-    drag: true,
-    snap: true,
-    autoWidth: true,
-    perMove: 1,
-    focus: 'center',
-    dragMinThreshold: { mouse: 20, touch: 20 }
-  }).mount();
+  // new Splide('#mobile-slider', {
+  //   type: 'loop',
+  //   rewind: true,
+  //   gap: '1rem',
+  //   perPage: 1,
+  //   arrows: false,
+  //   pagination: false,
+  //   drag: true,
+  //   snap: true,
+  //   autoWidth: true,
+  //   perMove: 1,
+  //   focus: 'center',
+  //   dragMinThreshold: { mouse: 20, touch: 20 }
+  // }).mount();
 
   const listTabBtn = document.getElementById('listTabBtn');
   const mapTabBtn = document.getElementById('mapTabBtn');

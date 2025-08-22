@@ -211,6 +211,9 @@ color: var(--color-secondary);
 .fm-header.shrink .solid-bottom {
   width: 100vw;
 }
+.fm-drop-shadow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 /* END HEADER */
 
 /* TABLET */
