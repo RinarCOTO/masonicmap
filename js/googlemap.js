@@ -1,33 +1,40 @@
-// ============================
 // Dependency checks
-// ============================
 if (typeof Splide === "undefined") throw new Error("Splide is required.");
 
-// ============================
 // Initialize Google Map
-// ============================
 function initMap() {
   console.log("initMap called");
-  const BASE_ZOOM = window.innerWidth < 768 ? 16 : 15;
-  const ACTIVE_ZOOM = window.innerWidth < 768 ? 17 : 18;
+
+  // Function to get zoom levels
+  function getZoomLevels() {
+    return {
+      BASE_ZOOM: 14, 
+      ACTIVE_ZOOM: 20, 
+    };
+  }
+
+  let { BASE_ZOOM, ACTIVE_ZOOM } = getZoomLevels();
 
   const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 37.76686, lng: -122.43144 }, // Default to Swedish American Hall
+    center: { lat: 37.76686, lng: -122.43144 },
     zoom: BASE_ZOOM,
-    zoomControl: false,
+    zoomControl: true,
+    zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_CENTER 
+      },
     scrollwheel: false,
     disableDefaultUI: true,
     draggable: false,
     keyboardShortcuts: false,
-    mapId: "9d2b267eea7aa96a6a90161f"
+    draggable: true, 
+    disableDoubleClickZoom: false,
+    mapId: "9d2b267eea7aa96a6a90161f",
   });
 
   // Load Advanced Markers library
   google.maps.importLibrary("marker").then(() => {
     console.log("Marker library loaded");
-    // ============================
     // Marker icons (SVGs as data URLs)
-    // ============================
     const inactiveIcon = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
       `<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="16" fill="red"/>
@@ -42,9 +49,7 @@ function initMap() {
       </svg>`
     );
 
-    // ============================
     // Collect articles & create markers
-    // ============================
     const articles = Array.from(document.querySelectorAll("article[data-lat][data-lng]"));
     console.log("Articles found:", articles.length);
     const markers = [];
@@ -62,16 +67,14 @@ function initMap() {
         map: map,
         title: article.querySelector("h2")?.textContent || `Marker ${index + 1}`,
         content: createMarkerElement(inactiveIcon),
-        zIndex: 1
+        zIndex: 1,
       });
 
       markers.push(marker);
     });
     console.log("Markers created:", markers.length);
 
-    // ============================
     // Utility: Create marker element
-    // ============================
     function createMarkerElement(iconUrl) {
       const img = document.createElement("img");
       img.src = iconUrl;
@@ -86,23 +89,18 @@ function initMap() {
       return img;
     }
 
-    // ============================
     // Utility: Update active marker
-    // ============================
     const debouncedUpdateMarkers = debounce((activeIndex) => {
       console.log("debouncedUpdateMarkers called with index:", activeIndex);
       markers.forEach((marker, i) => {
         marker.content.src = i === activeIndex ? activeIcon : inactiveIcon;
-        marker.content.style.transform = i === activeIndex 
-          ? "translateY(-50%) scale(1.2)"
-          : "translateY(-50%) scale(1)";
+        marker.content.style.transform =
+          i === activeIndex ? "translateY(-50%) scale(1.2)" : "translateY(-50%) scale(1)";
         marker.zIndex = i === activeIndex ? 1000 : 1;
       });
     }, 200);
 
-    // ============================
     // Utility: Debounce
-    // ============================
     function debounce(func, wait = 100) {
       let timeout;
       return (...args) => {
@@ -111,15 +109,18 @@ function initMap() {
       };
     }
 
-    // ============================
-    // Utility: Smooth animation for pan and zoom
-    // ============================
+    // Utility: Smooth zoom animation (no panning)
     const debouncedAnimateMapTransition = debounce((targetLat, targetLng, targetZoom, duration = 1200) => {
       console.log("debouncedAnimateMapTransition called:", { targetLat, targetLng, targetZoom });
-      const startCenter = map.getCenter();
-      const startLat = startCenter.lat();
-      const startLng = startCenter.lng();
-      const startZoom = map.getZoom();
+
+      // Instantly set the map center (no panning)
+      map.setCenter({ lat: targetLat, lng: targetLng });
+
+      // Step 1: Instantly set zoom to 13 (BASE_ZOOM for transition)
+      map.setZoom(13);
+
+      // Step 2: Animate zoom from 13 to targetZoom (19)
+      const startZoom = 13;
       const startTime = performance.now();
 
       function lerp(start, end, t) {
@@ -135,11 +136,7 @@ function initMap() {
         const t = Math.min(elapsed / duration, 1);
         const easedT = easeInOutQuad(t);
 
-        const currentLat = lerp(startLat, targetLat, easedT);
-        const currentLng = lerp(startLng, targetLng, easedT);
         const currentZoom = lerp(startZoom, targetZoom, easedT);
-
-        map.setCenter({ lat: currentLat, lng: currentLng });
         map.setZoom(currentZoom);
 
         if (t < 1) {
@@ -147,12 +144,13 @@ function initMap() {
         }
       }
 
-      requestAnimationFrame(step);
+      // Delay zoom-in to show zoom-out briefly
+      setTimeout(() => {
+        requestAnimationFrame(step);
+      }, 100);
     }, 200);
 
-    // ============================
     // Utility: Reattach More Info button listeners
-    // ============================
     function attachMoreInfoListeners() {
       console.log("Attaching More Info button listeners");
       const buttons = document.querySelectorAll(".more-info-btn");
@@ -161,10 +159,9 @@ function initMap() {
       const closeButton = document.getElementById("closeDetailOverlay");
 
       buttons.forEach((button, index) => {
-        // Preserve all attributes when cloning
         const newButton = document.createElement("button");
         newButton.innerHTML = button.innerHTML;
-        Array.from(button.attributes).forEach(attr => {
+        Array.from(button.attributes).forEach((attr) => {
           newButton.setAttribute(attr.name, attr.value);
         });
         button.parentNode.replaceChild(newButton, button);
@@ -179,9 +176,8 @@ function initMap() {
         });
       });
 
-      // Attach close button listener
       if (closeButton && detailOverlay) {
-        closeButton.removeEventListener("click", closeOverlayHandler); // Prevent duplicates
+        closeButton.removeEventListener("click", closeOverlayHandler);
         closeButton.addEventListener("click", closeOverlayHandler);
         function closeOverlayHandler() {
           console.log("Close overlay clicked");
@@ -193,9 +189,7 @@ function initMap() {
       console.log("More Info buttons attached:", buttons.length);
     }
 
-    // ============================
     // Map & slider sync helper
-    // ============================
     let activeArticle = null;
 
     function goToSlide(index) {
@@ -213,14 +207,13 @@ function initMap() {
         return;
       }
 
+      const { ACTIVE_ZOOM } = getZoomLevels();
       debouncedAnimateMapTransition(lat, lng, ACTIVE_ZOOM, 1200);
       debouncedUpdateMarkers(index);
       activeArticle = article;
     }
 
-    // ============================
     // Initialize mobile slider
-    // ============================
     const mobileSlider = new Splide("#mobile-slider", {
       type: "loop",
       perPage: 1,
@@ -234,12 +227,21 @@ function initMap() {
       perMove: 1,
       focus: "center",
       dragMinThreshold: { mouse: 20, touch: 20 },
-      start: 0
+      start: 0,
     });
 
-    // ============================
+    // Check URL hash on page load
+    const hash = window.location.hash;
+    let initialIndex = 0;
+    if (hash) {
+      const targetArticle = articles.find((article) => `#${article.id}` === hash);
+      if (targetArticle) {
+        initialIndex = articles.indexOf(targetArticle);
+        console.log("Hash found, setting initial index to:", initialIndex);
+      }
+    }
+
     // First-load sync for mobile
-    // ============================
     mobileSlider.on("mounted", () => {
       console.log("Splide mounted, articles:", articles.length);
       if (!articles.length) {
@@ -247,11 +249,10 @@ function initMap() {
         return;
       }
 
-      const firstRealIndex = 0;
-      console.log("Setting first slide to index:", firstRealIndex);
-      mobileSlider.go(firstRealIndex);
+      console.log("Setting first slide to index:", initialIndex);
+      mobileSlider.go(initialIndex);
       setTimeout(() => {
-        goToSlide(firstRealIndex);
+        goToSlide(initialIndex);
         attachMoreInfoListeners();
       }, 100);
     });
@@ -264,9 +265,7 @@ function initMap() {
 
     mobileSlider.mount();
 
-    // ============================
     // Desktop scroll handler
-    // ============================
     function getCurrentArticle() {
       const scrollMiddle = window.scrollY + window.innerHeight / 2;
       return (
@@ -295,6 +294,7 @@ function initMap() {
           return;
         }
 
+        const { ACTIVE_ZOOM } = getZoomLevels();
         debouncedAnimateMapTransition(lat, lng, ACTIVE_ZOOM, 1200);
         const index = articles.indexOf(current);
         if (index !== -1) mobileSlider.go(index);
@@ -306,38 +306,83 @@ function initMap() {
       window.addEventListener("scroll", scrollHandler);
     }
 
-    // ============================
     // Initial desktop map setup
-    // ============================
     if (window.innerWidth >= 768 && articles.length) {
       console.log("Initializing desktop map setup");
-      activeArticle = articles[0];
+      activeArticle = articles[initialIndex];
       const lat = parseFloat(activeArticle.dataset.lat);
       const lng = parseFloat(activeArticle.dataset.lng);
       if (!isNaN(lat) && !isNaN(lng)) {
         map.setCenter({ lat, lng });
-        map.setZoom(ACTIVE_ZOOM);
-        debouncedUpdateMarkers(0);
+        map.setZoom(19); // Set initial zoom to 19
+        debouncedUpdateMarkers(initialIndex);
         attachMoreInfoListeners();
       }
     }
 
-    // ============================
+    // Resize handler
+    const resizeHandler = debounce(() => {
+      console.log("Window resized, updating map");
+      google.maps.event.trigger(map, "resize");
+
+      // Update zoom levels
+      const newZoomLevels = getZoomLevels();
+      BASE_ZOOM = newZoomLevels.BASE_ZOOM;
+      ACTIVE_ZOOM = newZoomLevels.ACTIVE_ZOOM;
+
+      // Adjust map zoom based on current state
+      if (activeArticle) {
+        const lat = parseFloat(activeArticle.dataset.lat);
+        const lng = parseFloat(activeArticle.dataset.lng);
+        if (!isNaN(lat) && !isNaN(lng)) {
+          map.setCenter({ lat, lng });
+          map.setZoom(ACTIVE_ZOOM);
+        }
+      } else {
+        map.setZoom(BASE_ZOOM);
+      }
+
+      // Update scroll handler for desktop/mobile switch
+      if (window.innerWidth >= 768 && !scrollHandler) {
+        console.log("Switching to desktop mode");
+        scrollHandler = debounce(() => {
+          const current = getCurrentArticle();
+          if (!current || current === activeArticle) return;
+
+          activeArticle = current;
+
+          const lat = parseFloat(current.dataset.lat);
+          const lng = parseFloat(current.dataset.lng);
+          if (isNaN(lat) || isNaN(lng)) {
+            console.warn("Invalid lat/lng for desktop scroll:", current);
+            return;
+          }
+
+          const { ACTIVE_ZOOM } = getZoomLevels();
+          debouncedAnimateMapTransition(lat, lng, ACTIVE_ZOOM, 1200);
+          const index = articles.indexOf(current);
+          if (index !== -1) mobileSlider.go(index);
+
+          debouncedUpdateMarkers(index);
+          attachMoreInfoListeners();
+        }, 100);
+
+        window.addEventListener("scroll", scrollHandler);
+      } else if (window.innerWidth < 768 && scrollHandler) {
+        console.log("Switching to mobile mode");
+        window.removeEventListener("scroll", scrollHandler);
+        scrollHandler = null;
+      }
+    }, 200);
+
+    window.addEventListener("resize", resizeHandler);
+
     // Cleanup
-    // ============================
     function cleanup() {
       if (scrollHandler) window.removeEventListener("scroll", scrollHandler);
       window.removeEventListener("resize", resizeHandler);
       mobileSlider.destroy();
     }
-
-    // ============================
-    // Resize handler
-    // ============================
-    const resizeHandler = () => {
-      google.maps.event.trigger(map, "resize");
-    };
-    window.addEventListener("resize", resizeHandler);
   }).catch((error) => {
     console.error("Failed to load Google Maps marker library:", error);
   });
@@ -346,7 +391,7 @@ function initMap() {
 // Load Google Maps API asynchronously
 function loadGoogleMaps() {
   const script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD8sfnKfBzTX8OUygi8cKT0gms8Xn3CrVA&callback=initMap&libraries=marker`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD8sfnKfBzTX8OUygi8cKT0gms8Xn3CrVA&callback=initMap&libraries=marker&loading=async`;
   script.async = true;
   script.defer = true;
   script.onerror = () => console.error("Failed to load Google Maps API");

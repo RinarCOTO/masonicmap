@@ -78,6 +78,9 @@ footer a {
   font-variation-settings: 'wght' 900;
   font-weight: 900 !important;
 }
+address{
+  font-family: var(--font-secondary);
+}
 /* SPLIDER */
 /* Let Splide decide the height, just center content */
 .main-slider .splide__slide {
@@ -137,6 +140,9 @@ opacity: 1;
   color: var(--color-secondary);
 }
 
+.fm-hover-border:hover{
+  border-color: var(--border-color);
+}
 /* BORDER */
 .fm-border-l{
   border-left: 1px solid var(--color-border);
