@@ -1,671 +1,671 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Masonic Map</title>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Masonic Map</title>
 
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="js/main.js" defer></script>
-	<script src="js/googlemap.js" defer></script>
-	<!-- <script src="js/map.js" defer></script> -->
-	<!-- <script async defer 
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8sfnKfBzTX8OUygi8cKT0gms8Xn3CrVA&callback=initMap&libraries=marker"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
-    <link rel="icon" href="assets/freemason_favicon.webp" type="image/webp">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="js/main.js" defer></script>
+		<script src="js/googlemap.js" defer></script>
+		<!-- <script src="js/map.js" defer></script> -->
+		<!-- <script async defer 
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8sfnKfBzTX8OUygi8cKT0gms8Xn3CrVA&callback=initMap&libraries=marker"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+		<link rel="icon" href="assets/freemason_favicon.webp" type="image/webp">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
 
-</head>
-<body >
-	<header id="fm-main-header" class="fm-header ">
-		<div class="fm-logo">
-			<a href="https://freemason.org/" target="_blank" rel="noopener noreferrer">
-				<img src="assets/Masons-of-California_logo_Trans.png" alt="Masons of California Logo" target="_blank" rel="noopener noreferrer"  />
-			</a>
-		</div>
-		<hr class="solid-bottom ">
-	</header>
-	<main class="flex px-[80px] max-md:px-1 mx-auto mt-[140px] max-md:mt-[0px]">
-  
-		    <!-- Mobile Tabs -->
-			<div class="hidden max-md:block w-[132px] border-2 border-white rounded-full fixed bottom-5 left-1/2 -translate-x-1/2 bg-white z-50 fm-drop-shadow">
-				<div class="flex">
-				  <!-- LIST button -->
-				  <button 
-					id="listTabBtn"
-					class="flex items-center justify-center w-1/2 py-2 border-red-700 font-semibold focus:outline-none"
-				  >
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor" class="inline-block align-middle">
-					  <circle cx="6" cy="8" r="2"/>
-					  <path d="M12 7h14a1 1 0 0 1 0 2H12a1 1 0 0 1 0-2z"/>
-					  <circle cx="6" cy="16" r="2"/>
-					  <path d="M12 15h14a1 1 0 0 1 0 2H12a1 1 0 0 1 0-2z"/>
-					  <circle cx="6" cy="24" r="2"/>
-					  <path d="M12 23h14a1 1 0 0 1 0 2H12a1 1 0 0 1 0-2z"/>
-					</svg>
-					<span class="mobile-tab ml-2 align-middle">LIST</span>
-				  </button>
-			  
-				  <!-- MAP button -->
-				  <button 
-					id="mapTabBtn"
-					class="flex items-center justify-center w-1/2 py-2 border-transparent text-gray-500 font-semibold"
-				  >
-					<svg id="Map_24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" class="inline-block align-middle">
-					  <path fill="currentColor" d="M28 4.469l-1.406.625-6.625 2.844-7.625-2.875-.375-.125-.375.156-7 3-.594.25V27.53l1.406-.625 6.625-2.844 7.625 2.875.375.125.375-.156 7-3 .594-.25V4.47zM13 7.438l6 2.25v14.875l-6-2.25V7.438zM11 7.5v14.844l-5 2.156V9.656L11 7.5zm15 0v14.844l-5 2.156V9.656L26 7.5z"/>
-					</svg>
-					<span class="mobile-tab ml-2 align-middle">MAP</span>
-				  </button>
+	</head>
+	<body >
+		<header id="fm-main-header" class="fm-header ">
+			<div class="fm-logo">
+				<a href="https://freemason.org/" target="_blank" rel="noopener noreferrer">
+					<img src="assets/Masons-of-California_logo_Trans.png" alt="Masons of California Logo" target="_blank" rel="noopener noreferrer"  />
+				</a>
+			</div>
+			<hr class="solid-bottom ">
+		</header>
+		<main class="flex px-[80px] max-md:px-1 mx-auto mt-[140px] max-md:mt-[0px]">
+	
+				<!-- Mobile Tabs -->
+				<div class="hidden max-md:block w-[132px] border-2 border-white rounded-full fixed bottom-5 left-1/2 -translate-x-1/2 bg-white z-50 fm-drop-shadow">
+					<div class="flex">
+					<!-- LIST button -->
+					<button 
+						id="listTabBtn"
+						class="flex items-center justify-center w-1/2 py-2 border-red-700 font-semibold focus:outline-none"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="currentColor" class="inline-block align-middle">
+						<circle cx="6" cy="8" r="2"/>
+						<path d="M12 7h14a1 1 0 0 1 0 2H12a1 1 0 0 1 0-2z"/>
+						<circle cx="6" cy="16" r="2"/>
+						<path d="M12 15h14a1 1 0 0 1 0 2H12a1 1 0 0 1 0-2z"/>
+						<circle cx="6" cy="24" r="2"/>
+						<path d="M12 23h14a1 1 0 0 1 0 2H12a1 1 0 0 1 0-2z"/>
+						</svg>
+						<span class="mobile-tab ml-2 align-middle">LIST</span>
+					</button>
+				
+					<!-- MAP button -->
+					<button 
+						id="mapTabBtn"
+						class="flex items-center justify-center w-1/2 py-2 border-transparent text-gray-500 font-semibold"
+					>
+						<svg id="Map_24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" class="inline-block align-middle">
+						<path fill="currentColor" d="M28 4.469l-1.406.625-6.625 2.844-7.625-2.875-.375-.125-.375.156-7 3-.594.25V27.53l1.406-.625 6.625-2.844 7.625 2.875.375.125.375-.156 7-3 .594-.25V4.47zM13 7.438l6 2.25v14.875l-6-2.25V7.438zM11 7.5v14.844l-5 2.156V9.656L11 7.5zm15 0v14.844l-5 2.156V9.656L26 7.5z"/>
+						</svg>
+						<span class="mobile-tab ml-2 align-middle">MAP</span>
+					</button>
+					</div>
 				</div>
-			</div>
-		<!-- Article List -->
+			<!-- Article List -->
 
-		<div id="listTab" class="w-[40vw] max-md:w-[100vw] p-[20px] space-y-[50px]  ">
-			<div class="mt-[60px] space-y-[30px] flex flex-col items-center ">
-				<img class="mb-[10px]" src="assets/grey-logo.webp" alt="">
-				<h1 class="text-center text-[50px] max-md-text-5xl">Welcome to the Masons of California</h1>
-				<hr class="border-b border-[#a41c215e] w-[70%]">
-				<p>Freemasonry is the world’s first and largest fraternal organization. It is guided by the enduring belief that everyone has a responsibility to make the world a better place.  For 300 years, Freemasonry has enhanced and strengthened the character of individual men by providing opportunities for fellowship, charity, and the search for truth – within ourselves and the larger world.  Through Freemasonry, we make true friends, improve ourselves, and have a positive impact on our communities. </p>
-			</div>
-				<!-- Swedish American Hall -->
-			<article id="swedish-american-hall"  class="flex flex-col gap-[20px]" data-lat="37.7671" data-lng="-122.4324">
-				<!-- Article Header -->
-				<header class="flex flex-col gap-5">
-					<div class="flex items-center gap-5">
-						<h2 class="m-0">Swedish&nbsp;-&nbsp;American Hall</h2>
-						<div class="relative flex items-center justify-center">
-							<button 
-								onclick="copyArticleLink(this, 'swedish-american-hall')" 
-								aria-label="Copy link to Swedish American Hall" 
-                                title="Copy link to Swedish American Hall"
-								class="my-auto"
-							>
-								<svg 
-									id="Link_24" 
-									width="24" 
-									height="24" 
-									viewBox="0 0 24 24" 
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentColor"
-									role="img"
-									aria-hidden="true"
+			<div id="listTab" class="w-[40vw] max-md:w-[100vw] p-[20px] space-y-[50px]  ">
+				<div class="mt-[60px] space-y-[30px] flex flex-col items-center ">
+					<img class="mb-[10px]" src="assets/grey-logo.webp" alt="">
+					<h1 class="text-center text-[50px] max-md-text-5xl">Welcome to the Masons of California</h1>
+					<hr class="border-b border-[#a41c215e] w-[70%]">
+					<p>Freemasonry is the world’s first and largest fraternal organization. It is guided by the enduring belief that everyone has a responsibility to make the world a better place.  For 300 years, Freemasonry has enhanced and strengthened the character of individual men by providing opportunities for fellowship, charity, and the search for truth – within ourselves and the larger world.  Through Freemasonry, we make true friends, improve ourselves, and have a positive impact on our communities. </p>
+				</div>
+					<!-- Swedish American Hall -->
+				<article id="swedish-american-hall"  class="flex flex-col gap-[20px]" data-lat="37.7671" data-lng="-122.4324">
+					<!-- Article Header -->
+					<header class="flex flex-col gap-5">
+						<div class="flex items-center gap-5">
+							<h2 class="m-0">Swedish&nbsp;-&nbsp;American Hall</h2>
+							<div class="relative flex items-center justify-center">
+								<button 
+									onclick="copyArticleLink(this, 'swedish-american-hall')" 
+									aria-label="Copy link to Swedish American Hall" 
+									title="Copy link to Swedish American Hall"
+									class="my-auto"
 								>
-									<g transform="rotate(-45 12 12)">
-										<path d="M7 11h10v2H7z"/>
-										<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
-									</g>
+									<svg 
+										id="Link_24" 
+										width="24" 
+										height="24" 
+										viewBox="0 0 24 24" 
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor"
+										role="img"
+										aria-hidden="true"
+									>
+										<g transform="rotate(-45 12 12)">
+											<path d="M7 11h10v2H7z"/>
+											<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
+										</g>
+									</svg>
+								</button>
+								<div 
+								class="copy-toast absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 z-10"
+								role="status"
+								aria-live="polite"
+							>
+								Link copied!
+							</div>
+							</div>
+						</div>
+					</header>
+					<!-- Address -->
+						<!-- <div class="flex gap-5 border-y fm-border py-[11px] items-center w-[30vw] max-md:w-[70vw]">
+							<svg 
+								style="fill: var(--icon);" 
+								id="Pin_24" 
+								width="20" 
+								height="20" 
+								viewBox="0 0 24 24" 
+								xmlns="http://www.w3.org/2000/svg"
+								role="img"
+								aria-hidden="true"
+							>
+								<path 
+									d="M12 0C7.58 0 4 3.58 4 8c0 3.51 5 11.99 7.15 15.52a1 1 0 0 0 1.7 0C15 20 20 11.51 20 8c0-4.42-3.58-8-8-8zM12 11.5A3.5 3.5 0 1 1 15.5 8 3.5 3.5 0 0 1 12 11.5z" 
+									fill="currentColor"
+								/>
+							</svg>
+							<address  class="not-italic">2174 Market Street</address>
+						</div> -->
+							<address >2174 Market Street</address>
+					<!-- Body Text -->
+					<p>
+						The number of Scandinavian people nearly doubled in San Francisco between 1900 and 1910, with much of that community centered around the area near Market Street and Dolores. Smack dab in the center of it was the Swedish American Hall, built in 1908 and home to several social and fraternal groups. That included, from 1908 until 1987, the Masonic lodge of Balder No. 393, named for the Norse god of light, comprised almost entirely of Scandinavian members. Initially the group aimed to form as a Swedish-language lodge (to complement the existing French, Italian, and German Masonic lodges in San Francisco at the time). Ultimately the group settled on English, however, but still kept a particular Masonic heritage alive for nearly 80 years.
+					</p>
+					<div>
+						<!-- Visit Website -->
+						<div class="flex items-center gap-5 py-[11px] w-[30vw] max-md:w-[70vw] border-b fm-hover fm-border">
+							<a href="https://swedishamericanhall.com/" 
+							class="flex items-center gap-5"
+							target="_blank">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+								viewBox="0 0 24 24" stroke-width="1.5" 
+								stroke="currentColor" class="size-6">
+								<path stroke-linecap="round" stroke-linejoin="round" 
+									d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+							</svg>
+							<span class="fm-icon-text">Visit Website</span>
+							</a>
+						</div>
+						
+					
+						<!-- Share Section -->
+						<div class=" flex gap-5 py-[11px] border-b fm-border items-center w-[30vw] max-md:w-[70vw]">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+							<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
+									d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
+							</svg>
+					
+							<span class="flex items-center gap-3">
+							Share to:
+							<a href="#" 
+							aria-label="Share to Facebook" 
+							class="fm-hover"
+							onclick="shareToSocial('facebook','swedish-american-hall'); return false;">
+							
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+									viewBox="0 0 24 24" class="transition-colors">
+								<path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
+										d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
 								</svg>
-							</button>
-							<div 
-							class="copy-toast absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 z-10"
-							role="status"
-							aria-live="polite"
-						  >
-							Link copied!
-						  </div>
+							</a>
+					
+							<a href="#" 
+							aria-label="Share to X" 
+							class="fm-hover"
+							onclick="shareToSocial('twitter','swedish-american-hall'); return false;">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+									viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+									class="transition-colors">
+								<path d="M4 4l11.733 16H20L8.267 4z"/>
+								<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
+								</svg>
+							</a>
+							</span>
 						</div>
 					</div>
-				</header>
-				<!-- Address -->
-					<!-- <div class="flex gap-5 border-y fm-border py-[11px] items-center w-[30vw] max-md:w-[70vw]">
-						<svg 
-							style="fill: var(--icon);" 
-							id="Pin_24" 
-							width="20" 
-							height="20" 
-							viewBox="0 0 24 24" 
-							xmlns="http://www.w3.org/2000/svg"
-							role="img"
-							aria-hidden="true"
-						>
-							<path 
-								d="M12 0C7.58 0 4 3.58 4 8c0 3.51 5 11.99 7.15 15.52a1 1 0 0 0 1.7 0C15 20 20 11.51 20 8c0-4.42-3.58-8-8-8zM12 11.5A3.5 3.5 0 1 1 15.5 8 3.5 3.5 0 0 1 12 11.5z" 
-								fill="currentColor"
-							/>
-						</svg>
-						<address  class="not-italic">2174 Market Street</address>
-					</div> -->
-						<address >2174 Market Street</address>
-				<!-- Body Text -->
-				<p>
-					The number of Scandinavian people nearly doubled in San Francisco between 1900 and 1910, with much of that community centered around the area near Market Street and Dolores. Smack dab in the center of it was the Swedish American Hall, built in 1908 and home to several social and fraternal groups. That included, from 1908 until 1987, the Masonic lodge of Balder No. 393, named for the Norse god of light, comprised almost entirely of Scandinavian members. Initially the group aimed to form as a Swedish-language lodge (to complement the existing French, Italian, and German Masonic lodges in San Francisco at the time). Ultimately the group settled on English, however, but still kept a particular Masonic heritage alive for nearly 80 years.
-				</p>
-				<div>
-					<!-- Visit Website -->
-					<div class="flex items-center gap-5 py-[11px] w-[30vw] max-md:w-[70vw] border-b fm-hover fm-border">
-						<a href="https://swedishamericanhall.com/" 
-						   class="flex items-center gap-5"
-						   target="_blank">
-						  <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
-							   viewBox="0 0 24 24" stroke-width="1.5" 
-							   stroke="currentColor" class="size-6">
-							<path stroke-linecap="round" stroke-linejoin="round" 
-								  d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-						  </svg>
-						  <span class="fm-icon-text">Visit Website</span>
-						</a>
+					
+
+					<!-- Image Gallery -->
+					<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px] mt-5">
+						
+						<!-- Main slider -->
+						<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
+							<div class="splide__track">
+								<ul class="splide__list ">
+									<li class="splide__slide ">
+										<video width="640" height="360" controls>
+										<source src="assets/14060889_3840_2160_30fps.mp4" type="video/mp4">
+										Your browser does not support the video tag.
+										</video>
+									</li>
+									<li class="splide__slide"><img src="assets/Swedish American Hall/swedish-hall-1.webp" alt="Interior of Swedish American Hall"></li>
+									<li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.webp" alt="Historic photo of Swedish American Hall"></li>
+									<li class="splide__slide"><img src="assets/Swedish American Hall/swedish-hall-2.webp" alt="Interior of Swedish American Hall"></li>
+								</ul>
+							</div>
+						</section>
+						<!-- Thumbnail slider -->
+						<section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
+							<hr class="solid">
+							<div class="splide__track mx-auto py-[20px]">
+							<ul class="splide__list ">
+								<li class="splide__slide"><img src="assets/4446326F-8B50-463E-9509-D137FEB8C37F.png" alt="Interior of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Swedish American Hall/swedish-hall-1.webp" alt="Interior of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.webp" alt="Historic photo of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Swedish American Hall/swedish-hall-2.wepb" alt="Interior of Swedish American Hall"></li>
+							</ul>
+							</div>
+						</section>
 					</div>
-					  
-				  
-					<!-- Share Section -->
-					  <div class=" flex gap-5 py-[11px] border-b fm-border items-center w-[30vw] max-md:w-[70vw]">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-						  <path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
+				</article>
+				<div class="gap-2 flex flex-col">
+					<hr class="solid-thick">
+					<hr class="solid-thin">
+				</div>
+
+				<article id="king-solomon-temple" class="flex flex-col gap-[30px] pb-[20px]" data-lat="37.7833" data-lng="-122.4370"
+				>
+
+					<!-- King Solomon -->
+					<header class="flex flex-col gap-[10px]">
+						<div class="flex items-center gap-[20px]">
+							<h2 class="m-0">King Solomon’s Temple, Golden Gate Commandery Asylum, Knights Templar</h2>
+							<div class="relative flex items-center justify-center">
+								<button 
+									onclick="copyArticleLink(this, 'king-solomons-temple')" 
+									aria-label="Copy link to King Solomons Temple"
+									title="Copy link to King Solomon's Temple"
+									class="my-auto"
+								>
+									<svg 
+										id="Link_24" 
+										width="24" 
+										height="24" 
+										viewBox="0 0 24 24" 
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor"
+										role="img"
+										aria-hidden="true"
+									>
+										<g transform="rotate(-45 12 12)">
+											<path d="M7 11h10v2H7z"/>
+											<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
+										</g>
+									</svg>
+								</button>
+								<div 
+								class="copy-toast absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 z-10"
+								role="status"
+								aria-live="polite"
+							>
+								Link copied!
+							</div>						  
+							</div>
+						</div>
+					</header>
+						<!-- Address -->
+						<address>2135 Sutter Street</address>
+					<!-- Body Text -->
+					<p>
+						The commandery of Golden Gate No. 16 of the Knights Templar met in the imposing Matthew O’Brien and Carl Werner-designed temple in the Western Addition from 1905–1949. But that was only the beginning of the building’s history: At that point, it was taken over by Macedonia Bapti, st Church, an influential institution during the Civil Rights era at which Martin Luther King twice gave speeches. The imposing façade, built in the so-called “Jacobean phase of the Medieval Revival” style, originally hosted several blue lodges, particularly after the 1906 earthquake, including Occidental No. 22, Argonaut No. 461, Bethlehem No. 453, Educator No. 554, Military Service No. 570, and others. In 1950, the commandery moved to Burlingame.
+					</p>
+					<div class="fm-social">				  
+						<!-- Visit Website -->
+						<div class="fm-hover">
+						<a href="#" target="_blank" class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+								viewBox="0 0 24 24" stroke-width="1.5" 
+								stroke="currentColor" class="size-6">
+							<path stroke-linecap="round" stroke-linejoin="round" 
+									d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+							</svg>
+							<span class="fm-icon-text">Visit Website</span>
+						</a>
+						</div>
+						<!-- Share Section -->
+						<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+							viewBox="0 0 24 24">
+							<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
 								d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
 						</svg>
-				  
+						
 						<span class="flex items-center gap-3">
-						  Share to:
-						  <a href="#" 
-						  aria-label="Share to Facebook" 
-						  class="fm-hover"
-						  onclick="shareToSocial('facebook','swedish-american-hall'); return false;">
-						  
+							Share to:
+							<!-- Facebook -->
+							<a href="#" aria-label="Share to Facebook" 
+							class="fm-hover"
+							onclick="shareToSocial('facebook','king-solomons-temple'); return false;">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-								 viewBox="0 0 24 24" class="transition-colors">
-							  <path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
+								viewBox="0 0 24 24" class="transition-colors">
+								<path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
 									d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
 							</svg>
-						  </a>
-				  
-						  <a href="#" 
-						  aria-label="Share to X" 
-						  class="fm-hover"
-						  onclick="shareToSocial('twitter','swedish-american-hall'); return false;">
+							</a>
+					
+							<!-- X/Twitter -->
+							<a href="#" aria-label="Share to X" 
+							class="fm-hover"
+							onclick="shareToSocial('twitter','king-solomons-temple'); return false;">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-								 viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-								 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-								 class="transition-colors">
-							  <path d="M4 4l11.733 16H20L8.267 4z"/>
-							  <path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
+								viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+								class="transition-colors">
+								<path d="M4 4l11.733 16H20L8.267 4z"/>
+								<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
 							</svg>
-						  </a>
+							</a>
 						</span>
-					  </div>
-				</div>
-				  
-
-				<!-- Image Gallery -->
-				<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px] mt-5">
-					
-					<!-- Main slider -->
-					<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
-						<div class="splide__track">
-							<ul class="splide__list ">
-								<li class="splide__slide ">
-									<video width="640" height="360" controls>
-									  <source src="assets/14060889_3840_2160_30fps.mp4" type="video/mp4">
-									  Your browser does not support the video tag.
-									</video>
-								  </li>
-                                <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 3.00.18 PM.png" alt="Interior of Swedish American Hall"></li>
-								<li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.png" alt="Historic photo of Swedish American Hall"></li>
-								<li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 2.53.21 PM.png" alt="Interior of Swedish American Hall"></li>
-							</ul>
-						</div>
-					</section>
-					<!-- Thumbnail slider -->
-                    <section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
-                        <hr class="solid">
-                        <div class="splide__track mx-auto py-[20px]">
-                        <ul class="splide__list ">
-                            <li class="splide__slide"><img src="assets/4446326F-8B50-463E-9509-D137FEB8C37F.png" alt="Interior of Swedish American Hall"></li>
-                            <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 3.00.18 PM.png" alt="Interior of Swedish American Hall"></li>
-                            <li class="splide__slide"><img src="assets/Swedish American Hall/497A3122.png" alt="Historic photo of Swedish American Hall"></li>
-                            <li class="splide__slide"><img src="assets/Swedish American Hall/Screenshot 2025-07-29 at 2.53.21 PM.png" alt="Interior of Swedish American Hall"></li>
-                        </ul>
-                        </div>
-                    </section>
-				</div>
-			</article>
-            <div class="gap-2 flex flex-col">
-                <hr class="solid-thick">
-                <hr class="solid-thin">
-            </div>
-
-			<article id="king-solomon-temple" class="flex flex-col gap-[30px] pb-[20px]" data-lat="37.7833" data-lng="-122.4370"
-			>
-
-				<!-- King Solomon -->
-				<header class="flex flex-col gap-[10px]">
-					<div class="flex items-center gap-[20px]">
-						<h2 class="m-0">King Solomon’s Temple, Golden Gate Commandery Asylum, Knights Templar</h2>
-						<div class="relative flex items-center justify-center">
-							<button 
-								onclick="copyArticleLink(this, 'king-solomons-temple')" 
-								aria-label="Copy link to King Solomons Temple"
-                                title="Copy link to King Solomon's Temple"
-								class="my-auto"
-							>
-								<svg 
-									id="Link_24" 
-									width="24" 
-									height="24" 
-									viewBox="0 0 24 24" 
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentColor"
-									role="img"
-									aria-hidden="true"
-								>
-									<g transform="rotate(-45 12 12)">
-										<path d="M7 11h10v2H7z"/>
-										<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
-									</g>
-								</svg>
-							</button>
-							<div 
-							class="copy-toast absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 z-10"
-							role="status"
-							aria-live="polite"
-						  >
-							Link copied!
-						  </div>						  
 						</div>
 					</div>
-				</header>
-					<!-- Address -->
-					<address>2135 Sutter Street</address>
-				<!-- Body Text -->
-				<p>
-					The commandery of Golden Gate No. 16 of the Knights Templar met in the imposing Matthew O’Brien and Carl Werner-designed temple in the Western Addition from 1905–1949. But that was only the beginning of the building’s history: At that point, it was taken over by Macedonia Bapti, st Church, an influential institution during the Civil Rights era at which Martin Luther King twice gave speeches. The imposing façade, built in the so-called “Jacobean phase of the Medieval Revival” style, originally hosted several blue lodges, particularly after the 1906 earthquake, including Occidental No. 22, Argonaut No. 461, Bethlehem No. 453, Educator No. 554, Military Service No. 570, and others. In 1950, the commandery moved to Burlingame.
-				</p>
-				<div class="fm-social">				  
-					<!-- Visit Website -->
-					<div class="fm-hover">
-					  <a href="#" target="_blank" class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
-							 viewBox="0 0 24 24" stroke-width="1.5" 
-							 stroke="currentColor" class="size-6">
-						  <path stroke-linecap="round" stroke-linejoin="round" 
-								d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-						</svg>
-						<span class="fm-icon-text">Visit Website</span>
-					  </a>
-					</div>
-					<!-- Share Section -->
-					<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
-					  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-						   viewBox="0 0 24 24">
-						<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
-							  d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
-					  </svg>
-					  
-					  <span class="flex items-center gap-3">
-						Share to:
-						<!-- Facebook -->
-						<a href="#" aria-label="Share to Facebook" 
-						   class="fm-hover"
-						   onclick="shareToSocial('facebook','king-solomons-temple'); return false;">
-						  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-							   viewBox="0 0 24 24" class="transition-colors">
-							<path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
-								  d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
-						  </svg>
-						</a>
-				  
-						<!-- X/Twitter -->
-						<a href="#" aria-label="Share to X" 
-						   class="fm-hover"
-						   onclick="shareToSocial('twitter','king-solomons-temple'); return false;">
-						  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-							   viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-							   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-							   class="transition-colors">
-							<path d="M4 4l11.733 16H20L8.267 4z"/>
-							<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
-						  </svg>
-						</a>
-					  </span>
-					</div>
-				</div>
-				<!-- Image Gallery -->
-				<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
-					
-					<!-- Main slider -->
-					<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
-						<div class="splide__track">
+					<!-- Image Gallery -->
+					<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
+						
+						<!-- Main slider -->
+						<section class="splide main-slider" aria-label="Swedish American Hall - Main images">
+							<div class="splide__track">
+								<ul class="splide__list">
+									<li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.webp" alt="Historic photo of Swedish American Hall"></li>
+									<li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.webp" alt="Interior of Swedish American Hall"></li>
+								</ul>
+							</div>
+						</section>
+						<!-- Thumbnail slider -->
+						<section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
+							<hr class="solid">
+							<div class="splide__track mx-auto py-[20px]">
 							<ul class="splide__list">
-								<li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt="Historic photo of Swedish American Hall"></li>
-								<li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt="Interior of Swedish American Hall"></li>
+								<li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.webp" alt=""></li>
+								<li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.webp" alt=""></li>
 							</ul>
-						</div>
-					</section>
-					<!-- Thumbnail slider -->
-                    <section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Swedish American Hall images">
-                        <hr class="solid">
-                        <div class="splide__track mx-auto py-[20px]">
-                        <ul class="splide__list">
-                            <li class="splide__slide"><img src="assets/Golden Gate Commandery/1_Golden_Gate_Commandery_of_Knights_Templar.jpg" alt=""></li>
-                            <li class="splide__slide"><img src="assets/Golden Gate Commandery/coll11_18055_extralarge.jpg" alt=""></li>
-                        </ul>
-                        </div>
-                    </section>
+							</div>
+						</section>
+					</div>
+				</article>
+				<div class="gap-2 flex flex-col">
+					<hr class="solid-thick">
+					<hr class="solid-thin">
 				</div>
-			</article>
-            <div class="gap-2 flex flex-col">
-                <hr class="solid-thick">
-                <hr class="solid-thin">
-            </div>
-            <article id="richmond-masonic-temple" class="flex flex-col gap-[30px] pb-[20px]" data-lat="37.7798" data-lng="-122.4680"
-			>
+				<article id="richmond-masonic-temple" class="flex flex-col gap-[30px] pb-[20px]" data-lat="37.7798" data-lng="-122.4680"
+				>
 
-				<!-- Article Header -->
-				<header class="flex flex-col gap-[10px]">
-					<div class="flex items-center gap-[20px]">
-						<h2 class="m-0">Richmond Masonic Temple</h2>
-						<div class="relative flex items-center justify-center">
-							<button 
-								onclick="copyArticleLink(this, 'richmond-masonic-temple')" 
-								aria-label="Copy link to Richmond Masonic Temple"
-                                title="Copy link to Richmond Masonic Temple"
-								class="my-auto"
-							>
-								<svg 
-									id="Link_24" 
-									width="24" 
-									height="24" 
-									viewBox="0 0 24 24" 
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentColor"
-									role="img"
-									aria-hidden="true"
+					<!-- Article Header -->
+					<header class="flex flex-col gap-[10px]">
+						<div class="flex items-center gap-[20px]">
+							<h2 class="m-0">Richmond Masonic Temple</h2>
+							<div class="relative flex items-center justify-center">
+								<button 
+									onclick="copyArticleLink(this, 'richmond-masonic-temple')" 
+									aria-label="Copy link to Richmond Masonic Temple"
+									title="Copy link to Richmond Masonic Temple"
+									class="my-auto"
 								>
-									<g transform="rotate(-45 12 12)">
-										<path d="M7 11h10v2H7z"/>
-										<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
-									</g>
-								</svg>
-							</button>
-							<div 
-							class="copy-toast absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 z-10"
-							role="status"
-							aria-live="polite"
-						  >
-							Link copied!
-						  </div>
+									<svg 
+										id="Link_24" 
+										width="24" 
+										height="24" 
+										viewBox="0 0 24 24" 
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor"
+										role="img"
+										aria-hidden="true"
+									>
+										<g transform="rotate(-45 12 12)">
+											<path d="M7 11h10v2H7z"/>
+											<path d="M18 7c-.712 0-3.288 0-4 0v2c.772 0 3.228 0 4 0a3 3 0 1 1 0 6c-.772 0-3.228 0-4 0v2c.712 0 3.288 0 4 0a5 5 0 1 0 0-10zM6 17c.712 0 3.288 0 4 0v-2c-.772 0-3.228 0-4 0a3 3 0 1 1 0-6c.772 0 3.228 0 4 0V7c-.712 0-3.288 0-4 0a5 5 0 1 0 0 10z"/>
+										</g>
+									</svg>
+								</button>
+								<div 
+								class="copy-toast absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2.5 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 z-10"
+								role="status"
+								aria-live="polite"
+							>
+								Link copied!
+							</div>
+							</div>
 						</div>
-					</div>
-				</header>
-				<address>405 Arguello Street</address>
+					</header>
+					<address>405 Arguello Street</address>
 
-				<!-- Body Text -->
-				<p>
-					Many of the fraternal flourishes remain inside the 1908 Richmond Masonic Temple on Arguello Boulevard (originally called First Avenue), designed by Hermann Barth, architect of the city’s German Hospital. Engraved Masonic symbols, Corinthian column paneling, and the vaulted ceiling still give a sense of grandeur to what is now a fitness gym. However, the most striking details of the massive building, which was the first major construction project in the Richmond District after the 1906 earthquake, is not part of the original design at all: In 1936, Bernard J. Joseph (who also designed the old Orpheum Theater, on O’Farrell) renovated the building’s exterior in a Mayan Deco theme, with engraved paneling along the parapet at the building’s roofline. The temple was once home to Richmond No. 375 and later Lebanon No. 495 and Seal Rock No. 536.
-				</p>
+					<!-- Body Text -->
+					<p>
+						Many of the fraternal flourishes remain inside the 1908 Richmond Masonic Temple on Arguello Boulevard (originally called First Avenue), designed by Hermann Barth, architect of the city’s German Hospital. Engraved Masonic symbols, Corinthian column paneling, and the vaulted ceiling still give a sense of grandeur to what is now a fitness gym. However, the most striking details of the massive building, which was the first major construction project in the Richmond District after the 1906 earthquake, is not part of the original design at all: In 1936, Bernard J. Joseph (who also designed the old Orpheum Theater, on O’Farrell) renovated the building’s exterior in a Mayan Deco theme, with engraved paneling along the parapet at the building’s roofline. The temple was once home to Richmond No. 375 and later Lebanon No. 495 and Seal Rock No. 536.
+					</p>
 
-				<!-- Image Gallery -->
-				<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
-					
-					<!-- Main slider -->
-					<section class="splide main-slider" aria-label="Richmond Masonic Temple - Main images">
-						<div class="splide__track">
+					<!-- Image Gallery -->
+					<div class="flex flex-col splide-gallery-pair gap-[20px]  border-[1px]">
+						
+						<!-- Main slider -->
+						<section class="splide main-slider" aria-label="Richmond Masonic Temple - Main images">
+							<div class="splide__track">
+								<ul class="splide__list">
+									<li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.webp" alt=""></li>
+									<li class="splide__slide"><img src="assets/Richmond Temple/497A3136.webp" alt=""></li>
+									<li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.webp" alt=""></li>
+								</ul>
+							</div>
+						</section>
+						<!-- Thumbnail slider -->
+						<section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Richmond Masonic Temple images">
+							<hr class="solid">
+							<div class="splide__track mx-auto py-[20px]">
 							<ul class="splide__list">
-                                <li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt=""></li>
-                                <li class="splide__slide"><img src="assets/Richmond Temple/497A3136.png" alt=""></li>
-                                <li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.jpg" alt=""></li>
+								<li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.webp" alt=""></li>
+								<li class="splide__slide"><img src="assets/Richmond Temple/497A3136.webp" alt=""></li>
+								<li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.webp" alt=""></li>
 							</ul>
+							</div>
+						</section>
+					</div>
+					<div>
+					</div>
+					<div class="fm-social">				  
+						<!-- Visit Website -->
+						<div class="fm-hover">
+						<a href="https://www.causeiq.com/organizations/richmond-masonic-temple-of-san-francisco%2C940806220/"
+							target="_blank" 
+							class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+								viewBox="0 0 24 24" stroke-width="1.5" 
+								stroke="currentColor" class="size-6">
+							<path stroke-linecap="round" stroke-linejoin="round" 
+									d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+							</svg>
+							<span class="fm-icon-text">Visit Website</span>
+						</a>
 						</div>
-					</section>
-					<!-- Thumbnail slider -->
-                    <section class="splide thumbnail-slider" aria-label="Thumbnail navigation for Richmond Masonic Temple images">
-                        <hr class="solid">
-                        <div class="splide__track mx-auto py-[20px]">
-                        <ul class="splide__list">
-                            <li class="splide__slide"><img src="assets/Richmond Temple/11110738003_222699d384_o.jpg" alt=""></li>
-                            <li class="splide__slide"><img src="assets/Richmond Temple/497A3136.png" alt=""></li>
-                            <li class="splide__slide"><img src="assets/Richmond Temple/IMG_5007.jpg" alt=""></li>
-                        </ul>
-                        </div>
-                    </section>
-				</div>
-				<div>
-				</div>
-				<div class="fm-social">				  
-					<!-- Visit Website -->
-					<div class="fm-hover">
-					  <a href="https://www.causeiq.com/organizations/richmond-masonic-temple-of-san-francisco%2C940806220/"
-						 target="_blank" 
-						 class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" 
-							 viewBox="0 0 24 24" stroke-width="1.5" 
-							 stroke="currentColor" class="size-6">
-						  <path stroke-linecap="round" stroke-linejoin="round" 
-								d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-						</svg>
-						<span class="fm-icon-text">Visit Website</span>
-					  </a>
-					</div>
-				  
-					<!-- Share Section -->
-					<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
-					  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-						   viewBox="0 0 24 24">
-						<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
-							  d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
-					  </svg>
-					  
-					  <span class="flex items-center gap-3">
-						Share to:
-						<!-- Facebook -->
-						<a href="#" aria-label="Share to Facebook" 
-						   class="fm-hover"
-						   onclick="shareToSocial('facebook','richmond-masonic-temple'); return false;">
-						  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-							   viewBox="0 0 24 24" class="transition-colors">
-							<path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
-								  d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
-						  </svg>
-						</a>
-				  
-						<!-- X/Twitter -->
-						<a href="#" aria-label="Share to X" 
-						   class="fm-hover"
-						   onclick="shareToSocial('twitter','richmond-masonic-temple'); return false;">
-						  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-							   viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-							   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-							   class="transition-colors">
-							<path d="M4 4l11.733 16H20L8.267 4z"/>
-							<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
-						  </svg>
-						</a>
-					  </span>
-					</div>
-				  </div>
-				  
-								
-			</article>
-		</div>
-
-
-		<!-- Map section -->
-		<div id="mapTab" class="fm-map-wrapper w-[60vw] p-[20px] fm-border-l pb-[20px] max-md:w-[100vw] max-md:p-[0px]">
-			<div id="map" class="h-[90vh] sticky w-full max-md:h-[100vh]"></div>
-            <div>
-				<!-- Mobile Slider -->
-				<div id="mobile-slider" class="splide hidden max-md:block fixed bottom-[100px] z-50 drop-shadow-lg w-full">
-					<div class="splide__track">
-						<ul class="splide__list">
-							<!-- Slide 1 -->
-							<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.76686" data-lng="-122.43144">
-							  <article class="flex flex-col gap-1 summary-view">
-								<h3 class="font-extrabold">Swedish American Hall</h3>
-								<address class="text-sm">2174 Market Street</address>
-								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-								<button class="mx-auto mt-2 more-info-btn">More info</button>
-							  </article>
-							  <article class="detail-view hidden">
-								<div class="p-5">
-								  <h3 class="font-bold mb-3">Swedish American Hall 1</h3>
-								  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, commodi! Nostrum ullam magnam autem aliquid pariatur molestiae quasi repudiandae error fugiat libero natus modi nam iste magni in, illo consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam corrupti autem iure laborum tempora officia in ab est eos? At eius incidunt vitae iste totam eum dolores harum fugiat ducimus.</p>
-								</div>
-							  </article>
-							</li>
-							<!-- Slide 2 -->
-							<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7857" data-lng="-122.4354">
-							  <article class="flex flex-col gap-1 summary-view">
-								<h3>King Solomon’s Temple</h3>
-								<address class="text-sm">2135 Sutter Street</address>
-								<p>Some description of Restaurant 2.</p>
-								<button class="mx-auto mt-2 more-info-btn">More info</button>
-							  </article>
-							  <article class="detail-view hidden">
-								<div class="p-5">
-								  <h3 class="font-bold mb-3">King Solomon’s Temple</h3>
-								  <p>Full detail text for slide 2…</p>
-								</div>
-							  </article>
-							</li>
-							<!-- Slide 3 -->
-							<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7361" data-lng="-122.4753">
-							  <article class="flex flex-col gap-1 summary-view">
-								<h3>Richmond Masonic Temple</h3>
-								<address class="text-sm">2850 19th Avenue</address>
-								<p>Some description of Restaurant 3.</p>
-								<button class="mx-auto mt-2 more-info-btn">More info</button>
-							  </article>
-							  <article class="detail-view hidden">
-								<div class="p-5">
-								  <h3 class="font-bold mb-3">Richmond Masonic Temple</h3>
-								  <p>Full detail text for slide 3…</p>
-								</div>
-							  </article>
-							</li>
-						  </ul>
-					</div>
-				  </div>
-				<!-- Global Detail Overlay -->
-				<div id="detailOverlay" class="fixed inset-0 bg-black/70 hidden z-[2000] flex items-center justify-center h-full top-10">
-					<div class="bg-white w-[100%] max-w-2xl relative p-6 h-[90%] overflow-y-auto rounded-xl">
-					<!-- Close Button -->
-					<button id="closeDetailOverlay" class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl">&times;</button>
-				
-					<!-- Dynamic content goes here -->
-					<div id="detailContent" class="space-y-4"></div>
-					</div>
-				</div>
-            </div>
-		</div>
-	</main>
-
-	<footer id="footer" class="text-white p-5 bg-[#221E1F]">
-		<div class=" mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 border-b pb-2">
-		  
-		  <!-- Column 1 (Logo + Address + Phone) -->
-		  <div class="space-y-5 border-r max-md:border-none">
-			<img src="assets/logo-1.webp" alt="Free Mason Black and White Logo" class="w-48 h-12">
-			<address class="not-italic">
-			  Grand Lodge of California<br>
-			  1111 California Street<br>
-			  San Francisco, CA 94108<br>
-			</address>
-			<!-- Phone -->
-			<!--
-			<a href="tel:+14157767000" class="flex items-center gap-3 popup-link fm-hover">
-			  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-				viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-				stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<circle cx="12" cy="12" r="11"/>
-				<path d="M7.433 10.086V7.028h2.366v3.058zM14.162 16.814v-2.23h3.058v2.23z"/>
-				<path d="M14.162 16.814c-3.716 0-6.729-3.013-6.729-6.729"/>
-			  </svg>
-			  (415) 776-7000
-			</a>
-			-->
-		  </div>
-	  
-		  <!-- Column 2 (Socials) -->
-		  <div class="space-y-5 border-r max-md:border-none">
-			<span>Follow us on:</span>
-			<div class="flex flex-row gap-5">
-			  <!-- Facebook -->
-			  	<a href="https://www.facebook.com/MasonsofCalifornia" 
-				aria-label="Open Facebook" 
-				target="_blank" rel="noopener noreferrer">
-					<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm  border border-gray-500 fm-hover-border">
-						<svg xmlns="http://www.w3.org/2000/svg" 
-								class="w-5 h-5"
-								viewBox="0 0 24 24" fill="currentColor">
-							<path d="M16.403,9H14V7c0-1.032,0.084-1.682,1.563-1.682h0.868c0.552,0,1-0.448,1-1V3.064c0-0.523-0.401-0.97-0.923-1.005 
-									C15.904,2.018,15.299,1.999,14.693,2C11.98,2,10,3.657,10,6.699V9H8c-0.552,0-1,0.448-1,1v2c0,0.552,0.448,1,1,1l2-0.001V21 
-									c0,0.552,0.448,1,1,1h2c0.552,0,1-0.448,1-1v-8.003l2.174-0.001c0.508,0,0.935-0.381,0.993-0.886l0.229-1.996 
-									C17.465,9.521,17.001,9,16.403,9z"/>
-						</svg>
-					</div>
-				</a>
-				<!-- Twitter/X -->
-				<a href="https://x.com/MasonsofCA" 
-				aria-label="Open X" 
-				target="_blank" rel="noopener noreferrer">
-					<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm  border border-gray-500 fm-hover-border">
+					
+						<!-- Share Section -->
+						<div class="flex items-center gap-5 py-[11px] border-b fm-border w-[30vw] max-md:w-[70vw]">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-						viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-						stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-						class="transition-colors">
-						<path d="M4 4l11.733 16H20L8.267 4z"/>
-						<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
-					</svg>
+							viewBox="0 0 24 24">
+							<path fill="currentColor" transform="matrix(0.8 0 0 0.8 -2 -0.576)"
+								d="M 23.414062 4.4375 L 22 5.8515625 L 26.167969 10 L 16.5 10 C 13.468 10 11 12.467 11 15.5 C 11 18.533 13.468 21 16.5 21 L 17 21 L 17 19 L 16.5 19 C 14.57 19 13 17.43 13 15.5 C 13 13.57 14.57 12 16.5 12 L 26.171875 12 L 22.007812 16.164062 L 23.421875 17.578125 L 30 11 L 23.414062 4.4375 z M 5 5 L 5 27 L 27 27 L 27 17 L 25 19 L 25 25 L 7 25 L 7 7 L 17.853516 7 L 19.853516 5 L 5 5 z"/>
+						</svg>
+						
+						<span class="flex items-center gap-3">
+							Share to:
+							<!-- Facebook -->
+							<a href="#" aria-label="Share to Facebook" 
+							class="fm-hover"
+							onclick="shareToSocial('facebook','richmond-masonic-temple'); return false;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+								viewBox="0 0 24 24" class="transition-colors">
+								<path fill="currentColor" transform="matrix(0.83 0 0 0.83 -0.45 -0.42)" 
+									d="M15 3C8.373 3 3 8.373 3 15c0 6.016 4.432 10.984 10.206 11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475 1.693-5 4.581-5 1.383 0 2.115.103 2.461.149v2.752h-1.97c-1.226 0-1.654 1.163-1.654 2.473v1.724h3.593l-.487 3.154h-3.106v8.697C22.481 26.083 27 21.075 27 15c0-6.627-5.373-12-12-12z"/>
+							</svg>
+							</a>
+					
+							<!-- X/Twitter -->
+							<a href="#" aria-label="Share to X" 
+							class="fm-hover"
+							onclick="shareToSocial('twitter','richmond-masonic-temple'); return false;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+								viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+								class="transition-colors">
+								<path d="M4 4l11.733 16H20L8.267 4z"/>
+								<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
+							</svg>
+							</a>
+						</span>
+						</div>
 					</div>
-				</a>
-
-				<!-- Instagram -->
-				<a href="https://instagram.com/MasonsofCA/" 
-				aria-label="Open Instagram" 
-				target="_blank" rel="noopener noreferrer">
-				<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm border border-gray-500 fm-hover-border">
-					<svg xmlns="http://www.w3.org/2000/svg" 
-						viewBox="0 0 48 48" 
-						class="w-5 h-5 fill-current">
-					<path d="M 16.5 5 C 10.16639 5 5 10.16639 5 16.5 L 5 31.5 C 5 37.832757 10.166209 43 16.5 43 L 31.5 43 C 37.832938 43 43 37.832938 43 31.5 L 43 16.5 C 43 10.166209 37.832757 5 31.5 5 L 16.5 5 z M 16.5 8 L 31.5 8 C 36.211243 8 40 11.787791 40 16.5 L 40 31.5 C 40 36.211062 36.211062 40 31.5 40 L 16.5 40 C 11.787791 40 8 36.211243 8 31.5 L 8 16.5 C 8 11.78761 11.78761 8 16.5 8 z M 34 12 C 32.895 12 32 12.895 32 14 C 32 15.105 32.895 16 34 16 C 35.105 16 36 15.105 36 14 C 36 12.895 35.105 12 34 12 z M 24 14 C 18.495178 14 14 18.495178 14 24 C 14 29.504822 18.495178 34 24 34 C 29.504822 34 34 29.504822 34 24 C 34 18.495178 29.504822 14 24 14 z M 24 17 C 27.883178 17 31 20.116822 31 24 C 31 27.883178 27.883178 31 24 31 C 20.116822 31 17 27.883178 17 24 C 17 20.116822 20.116822 17 24 17 z"/>
-					</svg>
-				</div>
-				</a>
-				<!-- YouTube -->
-				<a href="https://www.youtube.com/@CaliforniaMasons" 
-				aria-label="Open YouTube" 
-				target="_blank" rel="noopener noreferrer">
-				<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm border border-gray-500 fm-hover-border">
-					<svg xmlns="http://www.w3.org/2000/svg" 
-						viewBox="0 0 24 24" 
-						class="w-5 h-5 fill-current">
-					<path d="M 12 4 C 12 4 5.7455469 3.9999687 4.1855469 4.4179688 C 3.3245469 4.6479688 2.6479687 5.3255469 2.4179688 6.1855469 C 1.9999687 7.7455469 2 12 2 12 C 2 12 1.9999687 16.254453 2.4179688 17.814453 C 2.6479687 18.675453 3.3255469 19.352031 4.1855469 19.582031 C 5.7455469 20.000031 12 20 12 20 C 12 20 18.254453 20.000031 19.814453 19.582031 C 20.674453 19.352031 21.352031 18.674453 21.582031 17.814453 C 22.000031 16.254453 22 12 22 12 C 22 12 22.000031 7.7455469 21.582031 6.1855469 C 21.352031 5.3255469 20.674453 4.6479688 19.814453 4.4179688 C 18.254453 3.9999687 12 4 12 4 z M 12 6 C 14.882 6 18.490875 6.1336094 19.296875 6.3496094 C 19.465875 6.3946094 19.604391 6.533125 19.650391 6.703125 C 19.891391 7.601125 20 10.342 20 12 C 20 13.658 19.891391 16.397875 19.650391 17.296875 C 19.605391 17.465875 19.466875 17.604391 19.296875 17.650391 C 18.491875 17.866391 14.882 18 12 18 C 9.119 18 5.510125 17.866391 4.703125 17.650391 C 4.534125 17.605391 4.3956094 17.466875 4.3496094 17.296875 C 4.1086094 16.398875 4 13.658 4 12 C 4 10.342 4.1086094 7.6011719 4.3496094 6.7011719 C 4.3946094 6.5331719 4.533125 6.3946094 4.703125 6.3496094 C 5.508125 6.1336094 9.118 6 12 6 z M 10 8.5351562 L 10 15.464844 L 16 12 L 10 8.5351562 z"></path>
-					</svg>
-				</div>
-				</a>
-				<!-- TikTok -->
-				<a href="https://www.tiktok.com/@CaliforniaMasons" 
-				aria-label="Open TikTok" 
-				target="_blank" rel="noopener noreferrer">
-				<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm border border-gray-500 fm-hover-border">
-					<svg xmlns="http://www.w3.org/2000/svg" 
-						viewBox="0 0 449.45 515.38" 
-						width="20" height="20" 
-						class="transition-colors fill-current">
-					<path d="M382.31 103.3c-27.76-18.1-47.79-47.07-54.04-80.82-1.35-7.29-2.1-14.8-2.1-22.48h-88.6l-.15 355.09c-1.48 39.77-34.21 71.68-74.33 71.68-12.47 0-24.21-3.11-34.55-8.56-23.71-12.47-39.94-37.32-39.94-65.91 0-41.07 33.42-74.49 74.48-74.49 7.67 0 15.02 1.27 21.97 3.44V190.8c-7.2-.99-14.51-1.59-21.97-1.59C73.16 189.21 0 262.36 0 352.3c0 55.17 27.56 104 69.63 133.52 26.48 18.61 58.71 29.56 93.46 29.56 89.93 0 163.08-73.16 163.08-163.08V172.23c34.75 24.94 77.33 39.64 123.28 39.64v-88.61c-24.75 0-47.8-7.35-67.14-19.96z"/>
-					</svg>
-				</div>
-				</a>
+					
+									
+				</article>
 			</div>
-		  </div>
-	  
-		  <!-- Column 3 (Legal Links) -->
-		  <div class="flex flex-col gap-5">
-			<a href="https://freemason.org/about-us/terms-of-use/"
-			  target="_blank" rel="noopener noreferrer"
-			  class="fm-hover">Terms of Use</a>
-			<a href="https://freemason.org/about-us/website-privacy-notice/"
-			  target="_blank" rel="noopener noreferrer"
-			  class="fm-hover">Privacy Policy</a>
-		  </div>
-	  
-		</div>
-	  
-		<!-- Copyright (Bottom Section) -->
-		<div class="mt-5 text-center text-[13px] font-secondary">
-		  © 2025 Masons of California. All rights reserved
-		</div>
-	</footer>  
-</body>
-</html>
+
+
+			<!-- Map section -->
+			<div id="mapTab" class="fm-map-wrapper w-[60vw] p-[20px] fm-border-l pb-[20px] max-md:w-[100vw] max-md:p-[0px]">
+				<div id="map" class="h-[90vh] sticky w-full max-md:h-[100vh]"></div>
+				<div>
+					<!-- Mobile Slider -->
+					<div id="mobile-slider" class="splide hidden max-md:block fixed bottom-[100px] z-50 drop-shadow-lg w-full">
+						<div class="splide__track">
+							<ul class="splide__list">
+								<!-- Slide 1 -->
+								<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.76686" data-lng="-122.43144">
+								<article class="flex flex-col gap-1 summary-view">
+									<h3 class="font-extrabold">Swedish American Hall</h3>
+									<address class="text-sm">2174 Market Street</address>
+									<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+									<button class="mx-auto mt-2 more-info-btn">More info</button>
+								</article>
+								<article class="detail-view hidden">
+									<div class="p-5">
+									<h3 class="font-bold mb-3">Swedish American Hall 1</h3>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, commodi! Nostrum ullam magnam autem aliquid pariatur molestiae quasi repudiandae error fugiat libero natus modi nam iste magni in, illo consequuntur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam corrupti autem iure laborum tempora officia in ab est eos? At eius incidunt vitae iste totam eum dolores harum fugiat ducimus.</p>
+									</div>
+								</article>
+								</li>
+								<!-- Slide 2 -->
+								<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7857" data-lng="-122.4354">
+								<article class="flex flex-col gap-1 summary-view">
+									<h3>King Solomon’s Temple</h3>
+									<address class="text-sm">2135 Sutter Street</address>
+									<p>Some description of Restaurant 2.</p>
+									<button class="mx-auto mt-2 more-info-btn">More info</button>
+								</article>
+								<article class="detail-view hidden">
+									<div class="p-5">
+									<h3 class="font-bold mb-3">King Solomon’s Temple</h3>
+									<p>Full detail text for slide 2…</p>
+									</div>
+								</article>
+								</li>
+								<!-- Slide 3 -->
+								<li class="splide__slide p-4 bg-white fm-mobile-slider" data-lat="37.7361" data-lng="-122.4753">
+								<article class="flex flex-col gap-1 summary-view">
+									<h3>Richmond Masonic Temple</h3>
+									<address class="text-sm">2850 19th Avenue</address>
+									<p>Some description of Restaurant 3.</p>
+									<button class="mx-auto mt-2 more-info-btn">More info</button>
+								</article>
+								<article class="detail-view hidden">
+									<div class="p-5">
+									<h3 class="font-bold mb-3">Richmond Masonic Temple</h3>
+									<p>Full detail text for slide 3…</p>
+									</div>
+								</article>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- Global Detail Overlay -->
+					<div id="detailOverlay" class="fixed inset-0 bg-black/70 hidden z-[2000] flex items-center justify-center h-full top-10">
+						<div class="bg-white w-[100%] max-w-2xl relative p-6 h-[90%] overflow-y-auto rounded-xl">
+						<!-- Close Button -->
+						<button id="closeDetailOverlay" class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl">&times;</button>
+					
+						<!-- Dynamic content goes here -->
+						<div id="detailContent" class="space-y-4"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer id="footer" class="text-white p-5 bg-[#221E1F]">
+			<div class=" mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-5 border-b pb-2">
+			
+			<!-- Column 1 (Logo + Address + Phone) -->
+			<div class="space-y-5 border-r max-md:border-none">
+				<img src="assets/logo-1.webp" alt="Free Mason Black and White Logo" class="w-48 h-12">
+				<address class="not-italic">
+				Grand Lodge of California<br>
+				1111 California Street<br>
+				San Francisco, CA 94108<br>
+				</address>
+				<!-- Phone -->
+				<!--
+				<a href="tel:+14157767000" class="flex items-center gap-3 popup-link fm-hover">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+					viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+					stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="11"/>
+					<path d="M7.433 10.086V7.028h2.366v3.058zM14.162 16.814v-2.23h3.058v2.23z"/>
+					<path d="M14.162 16.814c-3.716 0-6.729-3.013-6.729-6.729"/>
+				</svg>
+				(415) 776-7000
+				</a>
+				-->
+			</div>
+		
+			<!-- Column 2 (Socials) -->
+			<div class="space-y-5 border-r max-md:border-none">
+				<span>Follow us on:</span>
+				<div class="flex flex-row gap-5">
+				<!-- Facebook -->
+					<a href="https://www.facebook.com/MasonsofCalifornia" 
+					aria-label="Open Facebook" 
+					target="_blank" rel="noopener noreferrer">
+						<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm  border border-gray-500 fm-hover-border">
+							<svg xmlns="http://www.w3.org/2000/svg" 
+									class="w-5 h-5"
+									viewBox="0 0 24 24" fill="currentColor">
+								<path d="M16.403,9H14V7c0-1.032,0.084-1.682,1.563-1.682h0.868c0.552,0,1-0.448,1-1V3.064c0-0.523-0.401-0.97-0.923-1.005 
+										C15.904,2.018,15.299,1.999,14.693,2C11.98,2,10,3.657,10,6.699V9H8c-0.552,0-1,0.448-1,1v2c0,0.552,0.448,1,1,1l2-0.001V21 
+										c0,0.552,0.448,1,1,1h2c0.552,0,1-0.448,1-1v-8.003l2.174-0.001c0.508,0,0.935-0.381,0.993-0.886l0.229-1.996 
+										C17.465,9.521,17.001,9,16.403,9z"/>
+							</svg>
+						</div>
+					</a>
+					<!-- Twitter/X -->
+					<a href="https://x.com/MasonsofCA" 
+					aria-label="Open X" 
+					target="_blank" rel="noopener noreferrer">
+						<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm  border border-gray-500 fm-hover-border">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+							viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+							class="transition-colors">
+							<path d="M4 4l11.733 16H20L8.267 4z"/>
+							<path d="M4 20l6.768-6.768M13.228 10.772L20 4"/>
+						</svg>
+						</div>
+					</a>
+
+					<!-- Instagram -->
+					<a href="https://instagram.com/MasonsofCA/" 
+					aria-label="Open Instagram" 
+					target="_blank" rel="noopener noreferrer">
+					<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm border border-gray-500 fm-hover-border">
+						<svg xmlns="http://www.w3.org/2000/svg" 
+							viewBox="0 0 48 48" 
+							class="w-5 h-5 fill-current">
+						<path d="M 16.5 5 C 10.16639 5 5 10.16639 5 16.5 L 5 31.5 C 5 37.832757 10.166209 43 16.5 43 L 31.5 43 C 37.832938 43 43 37.832938 43 31.5 L 43 16.5 C 43 10.166209 37.832757 5 31.5 5 L 16.5 5 z M 16.5 8 L 31.5 8 C 36.211243 8 40 11.787791 40 16.5 L 40 31.5 C 40 36.211062 36.211062 40 31.5 40 L 16.5 40 C 11.787791 40 8 36.211243 8 31.5 L 8 16.5 C 8 11.78761 11.78761 8 16.5 8 z M 34 12 C 32.895 12 32 12.895 32 14 C 32 15.105 32.895 16 34 16 C 35.105 16 36 15.105 36 14 C 36 12.895 35.105 12 34 12 z M 24 14 C 18.495178 14 14 18.495178 14 24 C 14 29.504822 18.495178 34 24 34 C 29.504822 34 34 29.504822 34 24 C 34 18.495178 29.504822 14 24 14 z M 24 17 C 27.883178 17 31 20.116822 31 24 C 31 27.883178 27.883178 31 24 31 C 20.116822 31 17 27.883178 17 24 C 17 20.116822 20.116822 17 24 17 z"/>
+						</svg>
+					</div>
+					</a>
+					<!-- YouTube -->
+					<a href="https://www.youtube.com/@CaliforniaMasons" 
+					aria-label="Open YouTube" 
+					target="_blank" rel="noopener noreferrer">
+					<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm border border-gray-500 fm-hover-border">
+						<svg xmlns="http://www.w3.org/2000/svg" 
+							viewBox="0 0 24 24" 
+							class="w-5 h-5 fill-current">
+						<path d="M 12 4 C 12 4 5.7455469 3.9999687 4.1855469 4.4179688 C 3.3245469 4.6479688 2.6479687 5.3255469 2.4179688 6.1855469 C 1.9999687 7.7455469 2 12 2 12 C 2 12 1.9999687 16.254453 2.4179688 17.814453 C 2.6479687 18.675453 3.3255469 19.352031 4.1855469 19.582031 C 5.7455469 20.000031 12 20 12 20 C 12 20 18.254453 20.000031 19.814453 19.582031 C 20.674453 19.352031 21.352031 18.674453 21.582031 17.814453 C 22.000031 16.254453 22 12 22 12 C 22 12 22.000031 7.7455469 21.582031 6.1855469 C 21.352031 5.3255469 20.674453 4.6479688 19.814453 4.4179688 C 18.254453 3.9999687 12 4 12 4 z M 12 6 C 14.882 6 18.490875 6.1336094 19.296875 6.3496094 C 19.465875 6.3946094 19.604391 6.533125 19.650391 6.703125 C 19.891391 7.601125 20 10.342 20 12 C 20 13.658 19.891391 16.397875 19.650391 17.296875 C 19.605391 17.465875 19.466875 17.604391 19.296875 17.650391 C 18.491875 17.866391 14.882 18 12 18 C 9.119 18 5.510125 17.866391 4.703125 17.650391 C 4.534125 17.605391 4.3956094 17.466875 4.3496094 17.296875 C 4.1086094 16.398875 4 13.658 4 12 C 4 10.342 4.1086094 7.6011719 4.3496094 6.7011719 C 4.3946094 6.5331719 4.533125 6.3946094 4.703125 6.3496094 C 5.508125 6.1336094 9.118 6 12 6 z M 10 8.5351562 L 10 15.464844 L 16 12 L 10 8.5351562 z"></path>
+						</svg>
+					</div>
+					</a>
+					<!-- TikTok -->
+					<a href="https://www.tiktok.com/@CaliforniaMasons" 
+					aria-label="Open TikTok" 
+					target="_blank" rel="noopener noreferrer">
+					<div class="w-[28px] h-[28px] flex items-center justify-center rounded-sm border border-gray-500 fm-hover-border">
+						<svg xmlns="http://www.w3.org/2000/svg" 
+							viewBox="0 0 449.45 515.38" 
+							width="20" height="20" 
+							class="transition-colors fill-current">
+						<path d="M382.31 103.3c-27.76-18.1-47.79-47.07-54.04-80.82-1.35-7.29-2.1-14.8-2.1-22.48h-88.6l-.15 355.09c-1.48 39.77-34.21 71.68-74.33 71.68-12.47 0-24.21-3.11-34.55-8.56-23.71-12.47-39.94-37.32-39.94-65.91 0-41.07 33.42-74.49 74.48-74.49 7.67 0 15.02 1.27 21.97 3.44V190.8c-7.2-.99-14.51-1.59-21.97-1.59C73.16 189.21 0 262.36 0 352.3c0 55.17 27.56 104 69.63 133.52 26.48 18.61 58.71 29.56 93.46 29.56 89.93 0 163.08-73.16 163.08-163.08V172.23c34.75 24.94 77.33 39.64 123.28 39.64v-88.61c-24.75 0-47.8-7.35-67.14-19.96z"/>
+						</svg>
+					</div>
+					</a>
+				</div>
+			</div>
+		
+			<!-- Column 3 (Legal Links) -->
+			<div class="flex flex-col gap-5">
+				<a href="https://freemason.org/about-us/terms-of-use/"
+				target="_blank" rel="noopener noreferrer"
+				class="fm-hover">Terms of Use</a>
+				<a href="https://freemason.org/about-us/website-privacy-notice/"
+				target="_blank" rel="noopener noreferrer"
+				class="fm-hover">Privacy Policy</a>
+			</div>
+		
+			</div>
+		
+			<!-- Copyright (Bottom Section) -->
+			<div class="mt-5 text-center text-[13px] font-secondary">
+			© 2025 Masons of California. All rights reserved
+			</div>
+		</footer>  
+	</body>
+	</html>
